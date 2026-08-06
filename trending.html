@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trending Products — InsightHub</title>
+  <meta name="description" content="See what's trending this week. Popular products, rising searches, and editor picks.">
+  <link rel="canonical" href="https://yourusername.github.io/InsightHub/trending.html">
+  <meta property="og:title" content="Trending Products — InsightHub">
+  <meta property="og:description" content="What's trending this week in product reviews and buying guides.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourusername.github.io/InsightHub/trending.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="categories.html">Categories</a>
+        <a href="comparison.html">Compare</a>
+        <a href="trending.html" class="active">Trending</a>
+        <a href="about.html">About</a>
+        <button class="search-btn" aria-label="Open search"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="categories.html">Categories</a>
+    <a href="comparison.html">Compare</a>
+    <a href="trending.html">Trending</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="search-overlay" role="dialog" aria-label="Search">
+    <button class="search-close" aria-label="Close search">&times;</button>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="search" placeholder="Search products, reviews, categories..." aria-label="Search products">
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <div class="container">
+      <h1>Trending Now</h1>
+      <p>What smart shoppers are researching and buying this week.</p>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="grid-3">
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=312&fit=crop" alt="iPhone 16 Pro Max" loading="lazy" width="500" height="312">
+          <div class="card-body">
+            <span class="card-category">Mobile · #1 Trending</span>
+            <h3 class="card-title"><a href="reviews.html">iPhone 16 Pro Max</a></h3>
+            <p class="card-text">Camera upgrades and battery life driving massive interest this season.</p>
+            <div class="card-meta">
+              <span class="rating"><span class="stars">★★★★★</span> 9.3</span>
+              <span class="price">$1,199</span>
+            </div>
+            <div class="mt-2">
+              <a href="#" class="btn btn-accent btn-sm" rel="nofollow sponsored">Check Latest Price</a>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500&h=312&fit=crop" alt="Steam Deck OLED" loading="lazy" width="500" height="312">
+          <div class="card-body">
+            <span class="card-category">Gaming · Rising Fast</span>
+            <h3 class="card-title"><a href="reviews.html">Steam Deck OLED</a></h3>
+            <p class="card-text">Holiday demand and new game releases keep this handheld in the spotlight.</p>
+            <div class="card-meta">
+              <span class="rating"><span class="stars">★★★★★</span> 9.3</span>
+              <span class="price">$549</span>
+            </div>
+            <div class="mt-2">
+              <a href="#" class="btn btn-accent btn-sm" rel="nofollow sponsored">Check Latest Price</a>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=312&fit=crop" alt="Sony Headphones" loading="lazy" width="500" height="312">
+          <div class="card-body">
+            <span class="card-category">Audio · Editor's Pick</span>
+            <h3 class="card-title"><a href="reviews.html">Sony WH-1000XM5</a></h3>
+            <p class="card-text">Still the noise-cancelling king. Frequent deal drops make it more accessible.</p>
+            <div class="card-meta">
+              <span class="rating"><span class="stars">★★★★★</span> 9.4</span>
+              <span class="price">$348</span>
+            </div>
+            <div class="mt-2">
+              <a href="#" class="btn btn-accent btn-sm" rel="nofollow sponsored">Check Latest Price</a>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=312&fit=crop" alt="MacBook Pro" loading="lazy" width="500" height="312">
+          <div class="card-body">
+            <span class="card-category">Tech</span>
+            <h3 class="card-title"><a href="reviews.html">MacBook Pro 14" M3</a></h3>
+            <p class="card-text">Creators and developers continue to flock to Apple silicon performance.</p>
+            <div class="card-meta">
+              <span class="rating"><span class="stars">★★★★★</span> 9.6</span>
+              <span class="price">$1,599</span>
+            </div>
+            <div class="mt-2">
+              <a href="#" class="btn btn-accent btn-sm" rel="nofollow sponsored">Check Latest Price</a>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1580480055273-228ff5388bd8?w=500&h=312&fit=crop" alt="Office Chair" loading="lazy" width="500" height="312">
+          <div class="card-body">
+            <span class="card-category">Office</span>
+            <h3 class="card-title"><a href="reviews.html">Herman Miller Aeron</a></h3>
+            <p class="card-text">Remote work boom keeps ergonomic chairs at the top of search lists.</p>
+            <div class="card-meta">
+              <span class="rating"><span class="stars">★★★★★</span> 9.5</span>
+              <span class="price">$1,445</span>
+            </div>
+            <div class="mt-2">
+              <a href="#" class="btn btn-accent btn-sm" rel="nofollow sponsored">Check Latest Price</a>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500&h=312&fit=crop" alt="Garmin Watch" loading="lazy" width="500" height="312">
+          <div class="card-body">
+            <span class="card-category">Fitness</span>
+            <h3 class="card-title"><a href="reviews.html">Garmin Fenix 8</a></h3>
+            <p class="card-text">Serious athletes upgrading for training readiness and ultra battery life.</p>
+            <div class="card-meta">
+              <span class="rating"><span class="stars">★★★★★</span> 9.0</span>
+              <span class="price">$999</span>
+            </div>
+            <div class="mt-2">
+              <a href="#" class="btn btn-accent btn-sm" rel="nofollow sponsored">Check Latest Price</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
+          <p>Smart Insights. Better Buying Decisions.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="reviews.html">Reviews</a>
+          <a href="categories.html">Categories</a>
+          <a href="comparison.html">Comparisons</a>
+          <a href="trending.html">Trending</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="disclosure.html">Affiliate Disclosure</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+          <a href="contact.html">Newsletter</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 InsightHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>

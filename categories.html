@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories — InsightHub</title>
+  <meta name="description" content="Browse product reviews by category: Tech, Gaming, Home, Fitness, Office, Mobile, Audio, and Lifestyle.">
+  <link rel="canonical" href="https://yourusername.github.io/InsightHub/categories.html">
+  <meta property="og:title" content="Categories — InsightHub">
+  <meta property="og:description" content="Browse product reviews by category.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourusername.github.io/InsightHub/categories.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="categories.html" class="active">Categories</a>
+        <a href="comparison.html">Compare</a>
+        <a href="trending.html">Trending</a>
+        <a href="about.html">About</a>
+        <button class="search-btn" aria-label="Open search"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="categories.html">Categories</a>
+    <a href="comparison.html">Compare</a>
+    <a href="trending.html">Trending</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="search-overlay" role="dialog" aria-label="Search">
+    <button class="search-close" aria-label="Close search">&times;</button>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="search" placeholder="Search products, reviews, categories..." aria-label="Search products">
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <div class="container">
+      <h1>Categories</h1>
+      <p>Explore reviews organized by the topics that matter to you.</p>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="grid-4">
+        <a href="reviews.html" class="category-card fade-in" data-category="tech">
+          <div class="category-icon">💻</div>
+          <h3>Tech</h3>
+          <p>Laptops, monitors, TVs, tablets, and the latest gadgets. Performance benchmarks and real-world testing.</p>
+        </a>
+        <a href="reviews.html" class="category-card fade-in" data-category="gaming">
+          <div class="category-icon">🎮</div>
+          <h3>Gaming</h3>
+          <p>Consoles, handhelds, controllers, and accessories. Find the best gear for every platform.</p>
+        </a>
+        <a href="reviews.html" class="category-card fade-in" data-category="home">
+          <div class="category-icon">🏠</div>
+          <h3>Home</h3>
+          <p>Smart home devices, vacuums, kitchen appliances, and everything that makes living better.</p>
+        </a>
+        <a href="reviews.html" class="category-card fade-in" data-category="fitness">
+          <div class="category-icon">💪</div>
+          <h3>Fitness</h3>
+          <p>Wearables, smart scales, home gym equipment, and recovery tools for active lifestyles.</p>
+        </a>
+        <a href="reviews.html" class="category-card fade-in" data-category="office">
+          <div class="category-icon">🪑</div>
+          <h3>Office</h3>
+          <p>Ergonomic chairs, standing desks, keyboards, mice, and productivity tools for remote work.</p>
+        </a>
+        <a href="reviews.html" class="category-card fade-in" data-category="mobile">
+          <div class="category-icon">📱</div>
+          <h3>Mobile</h3>
+          <p>Smartphones, cases, chargers, and accessories. Camera tests and battery deep-dives.</p>
+        </a>
+        <a href="reviews.html" class="category-card fade-in" data-category="audio">
+          <div class="category-icon">🎧</div>
+          <h3>Audio</h3>
+          <p>Headphones, earbuds, speakers, and soundbars. ANC tests, sound profiles, and comfort scores.</p>
+        </a>
+        <a href="reviews.html" class="category-card fade-in" data-category="lifestyle">
+          <div class="category-icon">✨</div>
+          <h3>Lifestyle</h3>
+          <p>E-readers, travel gear, everyday carry, and products that improve daily routines.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
+          <p>Smart Insights. Better Buying Decisions.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="reviews.html">Reviews</a>
+          <a href="categories.html">Categories</a>
+          <a href="comparison.html">Comparisons</a>
+          <a href="trending.html">Trending</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="disclosure.html">Affiliate Disclosure</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+          <a href="contact.html">Newsletter</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 InsightHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
