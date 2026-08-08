@@ -12,11 +12,42 @@
   function init() {
     setupNavigation();
     setupSearch();
+    setupCategories(); // <--- Added dynamic category renderer here
     setupScrollEffects();
     setupFadeInAnimations();
     setupFilters();
     setupNewsletter();
     setupSmoothScroll();
+  }
+
+  // ---------- Dynamic Categories ----------
+  function setupCategories() {
+    const categoriesData = [
+      { name: "Tech", slug: "tech", icon: "💻", desc: "Laptops, monitors, TVs, tablets, and the latest gadgets." },
+      { name: "Gaming", slug: "gaming", icon: "🎮", desc: "Consoles & accessories" },
+      { name: "Home", slug: "home", icon: "🏠", desc: "Smart home & appliances" },
+      { name: "Fitness", slug: "fitness", icon: "💪", desc: "Wearables & equipment" },
+      { name: "Office", slug: "office", icon: "🪑", desc: "Chairs, desks & gear" },
+      { name: "Mobile", slug: "mobile", icon: "📱", desc: "Phones & accessories" },
+      { name: "Audio", slug: "audio", icon: "🎧", desc: "Headphones & speakers" },
+      { name: "Lifestyle", slug: "lifestyle", icon: "✨", desc: "Everyday essentials" }
+    ];
+
+    function renderCategories(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      container.innerHTML = categoriesData.map(function(cat) {
+        return '<a href="reviews.html?category=' + cat.slug + '" class="category-card fade-in" data-category="' + cat.slug + '">' +
+          '<div class="category-icon">' + cat.icon + '</div>' +
+          '<h3>' + cat.name + '</h3>' +
+          '<p>' + cat.desc + '</p>' +
+          '</a>';
+      }).join('');
+    }
+
+    renderCategories("categories-grid");
+    renderCategories("categories-page-grid");
   }
 
   // ---------- Navigation ----------
@@ -73,7 +104,6 @@
 
     if (!searchBtn || !searchOverlay) return;
 
-    // Product data for client-side search
     const products = [
       { title: 'Sony WH-1000XM5 Headphones', category: 'Audio', page: 'reviews.html', rating: 9.4, price: '$348' },
       { title: 'Apple MacBook Pro 14" M3', category: 'Tech', page: 'reviews.html', rating: 9.6, price: '$1,599' },
@@ -119,7 +149,6 @@
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeSearch();
-      // Cmd/Ctrl + K to open search
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         openSearch();
@@ -156,9 +185,7 @@
   }
 
   // ---------- Scroll Effects ----------
-  function setupScrollEffects() {
-    // Optional: progress or other scroll-based effects
-  }
+  function setupScrollEffects() {}
 
   // ---------- Fade-in Animations ----------
   function setupFadeInAnimations() {
@@ -179,7 +206,6 @@
         observer.observe(el);
       });
     } else {
-      // Fallback
       elements.forEach(function (el) {
         el.classList.add('visible');
       });
