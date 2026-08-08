@@ -112,10 +112,6 @@
       
       <!-- Custom Featured Reviews Container -->
       <div class="grid-3" id="featured-reviews-container">
-        <!-- 
-          TO ADD A CUSTOM FEATURED REVIEW: 
-          Paste your <article class="review-card fade-in">...</article> blocks here!
-        -->
         <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 0;">
           <h3>No Featured Reviews Yet</h3>
           <p>Your custom product reviews will display here once you add them.</p>
@@ -133,10 +129,6 @@
       
       <!-- Synchronized Trending Grid Container -->
       <div class="grid-4" id="trending-grid">
-        <!-- 
-          TO ADD A CUSTOM TRENDING PRODUCT: 
-          Paste your <div class="card fade-in" data-product="Product Name">...</div> blocks here!
-        -->
         <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 0;">
           <h3>No Featured Trending Items</h3>
           <p>Top products will display here automatically as traffic builds on your site.</p>
@@ -166,10 +158,6 @@
             </tr>
           </thead>
           <tbody id="comparison-table-body">
-            <!-- 
-              TO ADD A CUSTOM COMPARISON ROW: 
-              Paste your <tr>...</tr> rows here as you add products!
-            -->
             <tr>
               <td colspan="5" style="text-align: center; padding: 3rem 0;">
                 <h3>No Comparisons Added Yet</h3>
@@ -185,53 +173,18 @@
     </div>
   </section>
 
-  <!-- Categories Grid -->
+  <!-- Categories Grid (Dynamic Injection) -->
   <section class="section" style="background: var(--bg-secondary);">
     <div class="container">
-      <h2 class="section-title fade-in">Browse by Category</h2>
-      <p class="section-subtitle fade-in">Find the right product for your lifestyle.</p>
-      <div class="grid-4">
-        <a href="categories.html" class="category-card fade-in">
-          <div class="category-icon">💻</div>
-          <h3>Tech</h3>
-          <p>Laptops, TVs & gadgets</p>
-        </a>
-        <a href="categories.html" class="category-card fade-in">
-          <div class="category-icon">🎮</div>
-          <h3>Gaming</h3>
-          <p>Consoles & accessories</p>
-        </a>
-        <a href="categories.html" class="category-card fade-in">
-          <div class="category-icon">🏠</div>
-          <h3>Home</h3>
-          <p>Smart home & appliances</p>
-        </a>
-        <a href="categories.html" class="category-card fade-in">
-          <div class="category-icon">💪</div>
-          <h3>Fitness</h3>
-          <p>Wearables & equipment</p>
-        </a>
-        <a href="categories.html" class="category-card fade-in">
-          <div class="category-icon">🪑</div>
-          <h3>Office</h3>
-          <p>Chairs, desks & gear</p>
-        </a>
-        <a href="categories.html" class="category-card fade-in">
-          <div class="category-icon">📱</div>
-          <h3>Mobile</h3>
-          <p>Phones & accessories</p>
-        </a>
-        <a href="categories.html" class="category-card fade-in">
-          <div class="category-icon">🎧</div>
-          <h3>Audio</h3>
-          <p>Headphones & speakers</p>
-        </a>
-        <a href="categories.html" class="category-card fade-in">
-          <div class="category-icon">✨</div>
-          <h3>Lifestyle</h3>
-          <p>Everyday essentials</p>
-        </a>
+      <div class="section-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <div>
+          <h2 class="fade-in" style="margin-bottom: 0.5rem;">Browse by Category</h2>
+          <p class="section-subtitle fade-in" style="margin-bottom: 0;">Find the right product for your lifestyle.</p>
+        </div>
+        <a href="categories.html" class="view-all" style="font-weight: 600; color: var(--primary);">View All Categories &rarr;</a>
       </div>
+      <!-- Dynamic Homepage Categories Container -->
+      <div class="grid-4" id="categories-grid"></div>
     </div>
   </section>
 
