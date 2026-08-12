@@ -12,7 +12,7 @@
   function init() {
     setupNavigation();
     setupSearch();
-    setupCategories(); // <--- Added dynamic category renderer here
+    setupCategories(); // Dynamic category renderer with localStorage support
     setupScrollEffects();
     setupFadeInAnimations();
     setupFilters();
@@ -20,9 +20,9 @@
     setupSmoothScroll();
   }
 
-  // ---------- Dynamic Categories ----------
+  // ---------- Dynamic Categories (Customizable via localStorage) ----------
   function setupCategories() {
-    const categoriesData = [
+    const defaultCategories = [
       { name: "Tech", slug: "tech", icon: "💻", desc: "Laptops, monitors, TVs, tablets, and the latest gadgets." },
       { name: "Gaming", slug: "gaming", icon: "🎮", desc: "Consoles & accessories" },
       { name: "Home", slug: "home", icon: "🏠", desc: "Smart home & appliances" },
@@ -32,6 +32,13 @@
       { name: "Audio", slug: "audio", icon: "🎧", desc: "Headphones & speakers" },
       { name: "Lifestyle", slug: "lifestyle", icon: "✨", desc: "Everyday essentials" }
     ];
+
+    // Load custom categories from localStorage or initialize with defaults
+    let categoriesData = JSON.parse(localStorage.getItem('insighthub_categories'));
+    if (!categoriesData) {
+      categoriesData = defaultCategories;
+      localStorage.setItem('insighthub_categories', JSON.stringify(categoriesData));
+    }
 
     function renderCategories(containerId) {
       const container = document.getElementById(containerId);
