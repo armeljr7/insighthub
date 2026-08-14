@@ -3,6 +3,23 @@
    Client-side search, navigation, animations
    ============================================ */
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// Your exact Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCCkXX5Rh8PC3lEP3qaLo4QdaQfYhPxJ6o",
+  authDomain: "qweezapp.firebaseapp.com",
+  projectId: "qweezapp",
+  storageBucket: "qweezapp.firebasestorage.app",
+  messagingSenderId: "457441532263",
+  appId: "1:457441532263:web:f523ac0b301a283b4177c2"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 (function () {
   'use strict';
 
@@ -247,27 +264,51 @@
     });
   }
 
-  // ---------- Newsletter ----------
+  // ---------- Newsletter (Connected to Firebase Firestore) ----------
   function setupNewsletter() {
     const forms = document.querySelectorAll('.newsletter-form');
     forms.forEach(function (form) {
-      form.addEventListener('submit', function (e) {
+      form.addEventListener('submit', async function (e) {
         e.preventDefault();
         const input = form.querySelector('input[type="email"]');
-        if (input && input.value) {
+        
+        if (input && input.value.trim()) {
+          const email = input.value.trim();
           const btn = form.querySelector('button');
           const originalText = btn ? btn.textContent : '';
+          
           if (btn) {
-            btn.textContent = 'Subscribed!';
+            btn.textContent = 'Subscribing...';
             btn.disabled = true;
           }
-          input.value = '';
-          setTimeout(function () {
+
+          try {
+            // Save email and timestamp to your qweezapp Firebase database under 'subscribers' collection
+            await addDoc(collection(db, "subscribers"), {
+              email: email,
+              subscribedAt: serverTimestamp()
+            });
+
+            if (btn) {
+              btn.textContent = 'Subscribed!';
+            }
+            input.value = '';
+
+            setTimeout(function () {
+              if (btn) {
+                btn.textContent = originalText;
+                btn.disabled = false;
+              }
+            }, 3000);
+
+          } catch (error) {
+            console.error("Error saving subscriber: ", error);
+            alert("Something went wrong. Please try again.");
             if (btn) {
               btn.textContent = originalText;
               btn.disabled = false;
             }
-          }, 3000);
+          }
         }
       });
     });
