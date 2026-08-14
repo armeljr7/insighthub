@@ -29,7 +29,7 @@ const db = getFirestore(app);
   function init() {
     setupNavigation();
     setupSearch();
-    setupCategories(); // Dynamic category renderer with localStorage support
+    setupCategories();
     setupScrollEffects();
     setupFadeInAnimations();
     setupFilters();
@@ -37,7 +37,7 @@ const db = getFirestore(app);
     setupSmoothScroll();
   }
 
-  // ---------- Dynamic Categories (Customizable via localStorage) ----------
+  // ---------- Dynamic Categories ----------
   function setupCategories() {
     const defaultCategories = [
       { name: "Tech", slug: "tech", icon: "💻", desc: "Laptops, monitors, TVs, tablets, and the latest gadgets." },
@@ -50,7 +50,6 @@ const db = getFirestore(app);
       { name: "Lifestyle", slug: "lifestyle", icon: "✨", desc: "Everyday essentials" }
     ];
 
-    // Load custom categories from localStorage or initialize with defaults
     let categoriesData = JSON.parse(localStorage.getItem('insighthub_categories'));
     if (!categoriesData) {
       categoriesData = defaultCategories;
@@ -87,7 +86,6 @@ const db = getFirestore(app);
         document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
       });
 
-      // Close on link click
       mobileNav.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
           menuToggle.classList.remove('active');
@@ -97,7 +95,6 @@ const db = getFirestore(app);
       });
     }
 
-    // Sticky navbar shadow
     if (navbar) {
       window.addEventListener('scroll', function () {
         if (window.scrollY > 20) {
@@ -108,7 +105,6 @@ const db = getFirestore(app);
       });
     }
 
-    // Set active nav link
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(function (link) {
       const href = link.getAttribute('href');
@@ -264,7 +260,7 @@ const db = getFirestore(app);
     });
   }
 
-  // ---------- Newsletter (Connected to Firebase Firestore) ----------
+  // ---------- Newsletter (Firebase Firestore) ----------
   function setupNewsletter() {
     const forms = document.querySelectorAll('.newsletter-form');
     forms.forEach(function (form) {
@@ -283,7 +279,6 @@ const db = getFirestore(app);
           }
 
           try {
-            // Save email and timestamp to your qweezapp Firebase database under 'subscribers' collection
             await addDoc(collection(db, "subscribers"), {
               email: email,
               subscribedAt: serverTimestamp()
