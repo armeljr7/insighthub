@@ -84,9 +84,15 @@
         <strong>Affiliate Disclosure:</strong> InsightHub may earn a commission when you purchase through links on this page at no extra cost to you. This helps us keep our reviews independent and free. <a href="disclosure.html">Learn more</a>.
       </div>
 
-      <!-- Custom Products Grid Container with Embedded Inline Data Fallback -->
+      <!-- Custom Products Grid Container with Multiple Products -->
       <div class="grid-3" id="reviews-container" data-loaded="true">
+        
+        <!-- Product 1: Lancôme Définicils -->
         <article class="review-card fade-in" data-category="mascara" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+          <div style="width: 100%; height: 220px; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+            <img src="https://m.media-amazon.com/images/I/51A1n3N02gL._AC_SL1000_.jpg" alt="Lancôme Définicils High Definition Mascara" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
+          </div>
+
           <div style="padding: 2rem;">
             <span style="display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;">Mascara & Beauty</span>
             <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Lancôme Définicils High Definition Mascara</h3>
@@ -103,6 +109,31 @@
             <a href="https://amzn.to/4xFCc7G" target="_blank" rel="noopener" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">Check Price on Amazon</a>
           </div>
         </article>
+
+        <!-- Product 2: Maybelline Lash Sensational Sky High -->
+        <article class="review-card fade-in" data-category="mascara" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+          <div style="width: 100%; height: 220px; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+            <img src="https://m.media-amazon.com/images/I/71wLpW6sT8L._AC_SL1500_.jpg" alt="Maybelline Lash Sensational Sky High Washable Mascara" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
+          </div>
+
+          <div style="padding: 2rem;">
+            <span style="display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;">Mascara & Beauty</span>
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Maybelline Lash Sensational Sky High Mascara</h3>
+            <p style="color: #4b5563; margin-bottom: 1.5rem;">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
+            
+            <div style="background: #f9fafb; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+              <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Quick Application Tips:</h4>
+              <ul style="padding-left: 1.25rem; color: #4b5563; font-size: 0.95rem;">
+                <li>Hold flex tower brush against lashes.</li>
+                <li>Extend from root to tip repeatedly for full impact.</li>
+              </ul>
+            </div>
+
+            <!-- Replace '#' with your actual Maybelline SiteStripe affiliate link -->
+            <a href="#" target="_blank" rel="noopener" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">Check Price on Amazon</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
@@ -141,7 +172,7 @@
   </footer>
   <script src="js/script.js"></script>
   <script>
-    // Inline data binding fix so filter buttons dynamically control and display cards properly
+    // Inline data binding script to handle category filtering dynamically
     document.addEventListener("DOMContentLoaded", function() {
       const filterBtns = document.querySelectorAll(".filter-btn");
       const cards = document.querySelectorAll("#reviews-container .review-card");
