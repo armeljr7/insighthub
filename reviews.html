@@ -84,8 +84,8 @@
         <strong>Affiliate Disclosure:</strong> InsightHub may earn a commission when you purchase through links on this page at no extra cost to you. This helps us keep our reviews independent and free. <a href="disclosure.html">Learn more</a>.
       </div>
 
-      <!-- Custom Products Grid Container -->
-      <div class="grid-3" id="reviews-container">
+      <!-- Custom Products Grid Container with Embedded Inline Data Fallback -->
+      <div class="grid-3" id="reviews-container" data-loaded="true">
         <article class="review-card fade-in" data-category="mascara" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
           <div style="padding: 2rem;">
             <span style="display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;">Mascara & Beauty</span>
@@ -140,5 +140,29 @@
     </div>
   </footer>
   <script src="js/script.js"></script>
+  <script>
+    // Inline data binding fix so filter buttons dynamically control and display cards properly
+    document.addEventListener("DOMContentLoaded", function() {
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const cards = document.querySelectorAll("#reviews-container .review-card");
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", function() {
+          filterBtns.forEach(b => b.classList.remove("active"));
+          this.classList.add("active");
+          const filter = this.getAttribute("data-filter");
+
+          cards.forEach(card => {
+            const category = card.getAttribute("data-category");
+            if (filter === "all" || category === filter) {
+              card.style.setProperty("display", "block", "important");
+            } else {
+              card.style.setProperty("display", "none", "important");
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
