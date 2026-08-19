@@ -1,557 +1,277 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>InsightHub — Smart Insights. Better Buying Decisions.</title>
-
   <meta name="description" content="InsightHub delivers honest product reviews, comparisons, and buying guides to help you make smarter purchasing decisions. Premium insights on tech, gaming, home, fitness & more.">
-
   <meta name="keywords" content="product reviews, buying guides, comparisons, tech reviews, affiliate marketing, honest reviews">
-
   <meta name="author" content="InsightHub">
-
   <link rel="canonical" href="https://armeljr7.github.io/insighthub/">
-
   
-
   <!-- Open Graph -->
-
   <meta property="og:type" content="website">
-
   <meta property="og:url" content="https://armeljr7.github.io/insighthub/">
-
   <meta property="og:title" content="InsightHub — Smart Insights. Better Buying Decisions.">
-
   <meta property="og:description" content="Honest product reviews, comparisons, and buying guides for smarter purchasing decisions.">
-
   <meta property="og:image" content="https://armeljr7.github.io/insighthub/images/og-image.png">
-
   <meta property="og:site_name" content="InsightHub">
-
   
-
   <!-- Twitter Card -->
-
   <meta name="twitter:card" content="summary_large_image">
-
   <meta name="twitter:title" content="InsightHub — Smart Insights. Better Buying Decisions.">
-
   <meta name="twitter:description" content="Honest product reviews, comparisons, and buying guides for smarter purchasing decisions.">
-
   <meta name="twitter:image" content="https://armeljr7.github.io/insighthub/images/og-image.png">
-
   
-
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
-
   
-
   <!-- JSON-LD Structured Data -->
-
   <script type="application/ld+json">
-
   {
-
     "@context": "https://schema.org",
-
     "@type": "WebSite",
-
     "name": "InsightHub",
-
     "url": "https://armeljr7.github.io/insighthub/",
-
     "description": "Smart Insights. Better Buying Decisions. Honest product reviews and comparisons.",
-
     "potentialAction": {
-
       "@type": "SearchAction",
-
       "target": "https://armeljr7.github.io/insighthub/?q={search_term_string}",
-
       "query-input": "required name=search_term_string"
-
     }
-
   }
-
   </script>
-
 </head>
-
 <body>
-
   <!-- Navigation -->
-
   <nav class="navbar" role="navigation" aria-label="Main navigation">
-
     <div class="nav-container">
-
       <a href="index.html" class="logo" aria-label="InsightHub Home">
-
         <div class="logo-icon">IH</div>
-
         <span>InsightHub</span>
-
       </a>
-
       <div class="nav-links">
-
         <a href="index.html" class="active">Home</a>
-
         <a href="reviews.html">Reviews</a>
-
         <a href="categories.html">Categories</a>
-
         <a href="comparison.html">Compare</a>
-
         <a href="trending.html">Trending</a>
-
         <a href="about.html">About</a>
-
         <button class="search-btn" aria-label="Open search" title="Search (Ctrl+K)">
-
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-
         </button>
-
       </div>
-
       <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
-
         <span></span><span></span><span></span>
-
       </button>
-
     </div>
-
   </nav>
-
   <div class="mobile-nav" role="navigation" aria-label="Mobile navigation">
-
     <a href="index.html">Home</a>
-
     <a href="reviews.html">Reviews</a>
-
     <a href="categories.html">Categories</a>
-
     <a href="comparison.html">Compare</a>
-
     <a href="trending.html">Trending</a>
-
     <a href="about.html">About</a>
-
     <a href="contact.html">Contact</a>
-
   </div>
-
-
 
   <!-- Search Overlay -->
-
   <div class="search-overlay" role="dialog" aria-label="Search">
-
     <button class="search-close" aria-label="Close search">&times;</button>
-
     <div class="search-box">
-
       <span class="search-icon">🔍</span>
-
       <input type="search" placeholder="Search products, reviews, categories..." aria-label="Search products">
-
       <div class="search-results"></div>
-
     </div>
-
   </div>
 
-
-
   <!-- Hero -->
-
   <section class="hero">
-
     <div class="container">
-
       <div class="hero-content">
-
         <div class="hero-badge">✨ Trusted by 50,000+ smart shoppers</div>
-
         <h1>Smart Insights.<br><span class="gradient">Better Buying Decisions.</span></h1>
-
         <p>Honest reviews, side-by-side comparisons, and expert buying guides — so you never regret a purchase again.</p>
-
         <div class="hero-actions">
-
           <a href="reviews.html" class="btn btn-primary btn-glow">Explore Reviews</a>
-
           <a href="comparison.html" class="btn btn-outline">Compare Products</a>
-
         </div>
-
       </div>
-
     </div>
-
   </section>
-
-
 
   <!-- Featured Reviews -->
-
   <section class="section" id="featured">
-
     <div class="container">
-
       <h2 class="section-title fade-in">Featured Reviews</h2>
-
       <p class="section-subtitle fade-in">In-depth analysis of the products that matter most right now.</p>
-
       
-
       <!-- Custom Featured Reviews Container -->
-
       <div class="grid-3" id="featured-reviews-container">
-
         <!-- Product: Maybelline Lash Sensational Sky High -->
-
-        <article class="review-card fade-in" style="cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onclick="window.location.href='product-sky-high.html';" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-
+        <article class="review-card fade-in" style="cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onclick="window.location.href='product.html?id=sky-high';" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <div style="width: 100%; height: 220px; background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-
             <img src="images/Maybelline.jpg" alt="Maybelline Lash Sensational Sky High Washable Mascara" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
-
           </div>
-
-
 
           <div style="padding: 2rem;">
-
             <span style="display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;">Mascara & Beauty</span>
-
-            <h3 style="font-size: 1.5rem; color: #111827; margin-bottom: 0.75rem;">
-
-              <a href="product-sky-high.html" style="color: inherit; text-decoration: none;">Maybelline Lash Sensational Sky High Mascara</a>
-
-            </h3>
-
-            <p style="color: #4b5563; margin-bottom: 1.5rem;">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
-
             
-
+            <p style="color: #4b5563; margin-bottom: 1.5rem;">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
+            
             <div style="background: #f9fafb; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-
               <h4 style="font-size: 1rem; color: #111827; margin-bottom: 0.5rem;">Overall Review:</h4>
-
               <div style="color: #4b5563; font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.75rem;">
-
                 <p style="margin: 0;">Customers find this mascara to be the best they've used, appreciating how it lengthens and thickens lashes while making them look fuller and longer...</p>
-
               </div>
-
             </div>
 
-
-
             <a href="https://amzn.to/4x9gh96" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">Check Price on Amazon</a>
-
           </div>
-
         </article>
-
       </div>
 
-
-
     </div>
-
   </section>
-
-
 
   <!-- Trending Products -->
-
   <section class="section" style="background: var(--bg-secondary);">
-
     <div class="container">
-
       <h2 class="section-title fade-in">Trending Right Now</h2>
-
       <p class="section-subtitle fade-in">What smart shoppers are looking at this week.</p>
-
       
-
       <!-- Synchronized Trending Grid Container -->
-
       <div class="grid-4" id="trending-grid">
-
         <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 0;">
-
           <h3>No Featured Trending Items</h3>
-
           <p>Top products will display here automatically as traffic builds on your site.</p>
-
         </div>
-
       </div>
-
-
 
       <div class="text-center mt-3">
-
         <a href="trending.html" class="btn btn-outline">View All Trending</a>
-
       </div>
-
     </div>
-
   </section>
-
-
 
   <!-- Comparison Preview -->
-
   <section class="section">
-
     <div class="container">
-
       <h2 class="section-title fade-in">Popular Comparisons</h2>
-
       <p class="section-subtitle fade-in">Side-by-side data so you can decide with confidence.</p>
-
       <div class="comparison-table-wrap fade-in">
-
         <table class="comparison-table">
-
           <thead>
-
             <tr>
-
               <th>Product</th>
-
               <th>Rating</th>
-
               <th>Best For</th>
-
               <th>Price</th>
-
               <th></th>
-
             </tr>
-
           </thead>
-
           <tbody id="comparison-table-body">
-
             <tr>
-
               <td colspan="5" style="text-align: center; padding: 3rem 0;">
-
                 <h3>No Comparisons Added Yet</h3>
-
                 <p>Your comparison data rows will appear here as you update your site.</p>
-
               </td>
-
             </tr>
-
           </tbody>
-
         </table>
-
       </div>
-
       <div class="text-center mt-3">
-
         <a href="comparison.html" class="btn btn-primary">See Full Comparisons</a>
-
       </div>
-
     </div>
-
   </section>
-
-
 
   <!-- Categories Grid (Dynamic Injection) -->
-
   <section class="section" style="background: var(--bg-secondary);">
-
     <div class="container">
-
       <div class="section-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-
         <div>
-
           <h2 class="fade-in" style="margin-bottom: 0.5rem;">Browse by Category</h2>
-
           <p class="section-subtitle fade-in" style="margin-bottom: 0;">Find the right product for your lifestyle.</p>
-
         </div>
-
         <a href="categories.html" class="view-all" style="font-weight: 600; color: var(--primary);">View All Categories &rarr;</a>
-
       </div>
-
       <!-- Dynamic Homepage Categories Container -->
-
       <div class="grid-4" id="categories-grid"></div>
-
     </div>
-
   </section>
-
-
 
   <!-- Newsletter -->
-
   <section class="section">
-
     <div class="container">
-
       <div class="newsletter fade-in">
-
         <h2>Stay Ahead of the Curve</h2>
-
         <p>Get weekly product insights, exclusive deals, and buying guides delivered to your inbox. No spam — ever.</p>
-
         <form class="newsletter-form" action="#" method="post">
-
           <input type="email" placeholder="Enter your email" required aria-label="Email address">
-
           <button type="submit" class="btn btn-primary">Subscribe</button>
-
         </form>
-
       </div>
-
     </div>
-
   </section>
-
-
 
   <!-- Pinterest CTA -->
-
   <section class="section" style="padding-top: 0;">
-
     <div class="container">
-
       <div class="pinterest-cta fade-in">
-
         <div class="pin-icon">📌</div>
-
         <div class="pinterest-cta-content">
-
           <h3>Pin It for Later</h3>
-
           <p>Save our reviews and buying guides to your Pinterest boards. Perfect for research and inspiration.</p>
-
         </div>
-
         <a href="https://pin.it/2JGOQQx8C" class="btn btn-outline" target="_blank" rel="noopener" style="border-color:#E60023;color:#ff4d6a;">Follow on Pinterest</a>
-
       </div>
-
     </div>
-
   </section>
 
-
-
   <!-- Footer -->
-
   <footer class="footer">
-
     <div class="container">
-
       <div class="footer-grid">
-
         <div class="footer-brand">
-
           <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
-
           <p>Smart Insights. Better Buying Decisions. We help you buy with confidence through honest, data-driven reviews.</p>
-
         </div>
-
         <div class="footer-col">
-
           <h4>Explore</h4>
-
           <a href="reviews.html">Reviews</a>
-
           <a href="categories.html">Categories</a>
-
           <a href="comparison.html">Comparisons</a>
-
           <a href="trending.html">Trending</a>
-
         </div>
-
         <div class="footer-col">
-
           <h4>Company</h4>
-
           <a href="about.html">About</a>
-
           <a href="contact.html">Contact</a>
-
           <a href="privacy.html">Privacy Policy</a>
-
           <a href="disclosure.html">Affiliate Disclosure</a>
-
         </div>
-
         <div class="footer-col">
-
           <h4>Connect</h4>
-
           <a href="https://pin.it/2JGOQQx8C" target="_blank" rel="noopener">Pinterest</a>
-
           <a href="contact.html">Newsletter</a>
-
           <a href="disclosure.html">Terms</a>
-
         </div>
-
       </div>
-
       <div class="footer-bottom">
-
         <p>&copy; 2026 InsightHub. All rights reserved.</p>
-
         <div class="footer-social">
-
           <a href="https://pin.it/2JGOQQx8C" target="_blank" rel="noopener" aria-label="Pinterest">📌</a>
-
           <a href="contact.html" aria-label="Email">✉</a>
-
         </div>
-
       </div>
-
     </div>
-
   </footer>
 
-
-
   <script type="module" src="js/script.js"></script>
-
 </body>
-
 </html>
