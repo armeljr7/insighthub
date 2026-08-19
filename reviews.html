@@ -87,15 +87,17 @@
       </div>
 
       <div class="grid-3" id="reviews-container" data-loaded="true">
-        <!-- Product: Maybelline Lash Sensational Sky High -->
-        <article class="review-card fade-in" data-category="mascara" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+        <!-- Product: Maybelline Lash Sensational Sky High (Clickable Card) -->
+        <article class="review-card fade-in" data-category="mascara" style="display: block !important; visibility: visible !important; opacity: 1 !important; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onclick="window.location.href='product-sky-high.html';" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <div style="width: 100%; height: 220px; background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px;">
             <img src="https://m.media-amazon.com/images/I/71wLpW6sT8L._AC_SL1500_.jpg" alt="Maybelline Lash Sensational Sky High Washable Mascara" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
           </div>
 
           <div style="padding: 2rem;">
             <span style="display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;">Mascara & Beauty</span>
-            <h3 style="font-size: 1.5rem; color: #111827; margin-bottom: 0.75rem;">Maybelline Lash Sensational Sky High Mascara</h3>
+            <h3 style="font-size: 1.5rem; color: #111827; margin-bottom: 0.75rem;">
+              <a href="product-sky-high.html" style="color: inherit; text-decoration: none;">Maybelline Lash Sensational Sky High Mascara</a>
+            </h3>
             <p style="color: #4b5563; margin-bottom: 1.5rem;">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
             
             <div style="background: #f9fafb; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
@@ -106,7 +108,8 @@
               </ul>
             </div>
 
-            <a href="#" target="_blank" rel="noopener" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">Check Price on Amazon</a>
+            <!-- Stop propagation on the buy button so clicking it goes directly to Amazon instead of triggering card navigation -->
+            <a href="#" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">Check Price on Amazon</a>
           </div>
         </article>
       </div>
