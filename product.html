@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Product Review — InsightHub</title>
+  <meta name="description" content="In-depth product review, pros, cons, and buying guide.">
+  <link rel="canonical" href="https://armeljr7.github.io/insighthub/product.html">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="categories.html">Categories</a>
+        <a href="comparison.html">Compare</a>
+        <a href="trending.html">Trending</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1 id="prod-name">Loading Product...</h1>
+      <p id="prod-tagline">Please wait while we fetch the review details.</p>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container" style="max-width: 800px;">
+      <div style="background: #ffffff; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+        
+        <!-- Product Image -->
+        <div style="width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; background: #f9fafb; border-radius: 8px;">
+          <img id="prod-img" src="" alt="Product Image" style="max-height: 100%; object-fit: contain; padding: 1rem;">
+        </div>
+
+        <!-- Description -->
+        <p id="prod-desc" style="color: #4b5563; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;"></p>
+        
+        <!-- Overall Review Box -->
+        <div id="review-box" style="background: #f9fafb; border: 1px solid #e5e7eb; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+          <h4 style="font-size: 1.1rem; color: #111827; margin-bottom: 0.75rem;">Overall Review:</h4>
+          <p id="prod-review" style="color: #4b5563; font-size: 1rem; line-height: 1.5; margin: 0;"></p>
+        </div>
+
+        <!-- Buy Button -->
+        <a id="prod-btn" href="#" target="_blank" rel="noopener" style="display: block; text-align: center; background: #2563eb; color: white; padding: 1rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem;">Check Price on Amazon</a>
+      
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
+          <p>Smart Insights. Better Buying Decisions.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="reviews.html">Reviews</a>
+          <a href="categories.html">Categories</a>
+          <a href="comparison.html">Comparisons</a>
+          <a href="trending.html">Trending</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="disclosure.html">Affiliate Disclosure</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+          <a href="contact.html">Newsletter</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 InsightHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Database & Dynamic Loader Script -->
+  <script>
+    const products = {
+      "sky-high": {
+        name: "Maybelline Lash Sensational Sky High Washable Mascara",
+        tagline: "Full volume meets limitless length!",
+        image: "images/Maybelline.jpg",
+        description: "Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.",
+        review: "Customers find this mascara to be the best they've used, appreciating how it lengthens and thickens lashes while making them look fuller and longer. The product receives positive feedback for its appearance, with customers getting compliments on their eyelashes, and they consider it worth the price. While some customers say it doesn't go on clumpy and lasts all day without flaking, others report clumping and flaking issues. The removal experience is mixed, with some saying it comes off easily with soap and water while others find it super hard to remove.",
+        affiliateLink: "https://amzn.to/4x9gh96"
+      }
+      // When you add new products later, add them right here like this:
+      // "your-next-product": { name: "...", tagline: "...", image: "...", description: "...", review: "...", affiliateLink: "..." }
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get("id");
+      const product = products[productId];
+
+      if (product) {
+        document.getElementById("page-title").innerText = product.name + " — InsightHub";
+        document.getElementById("prod-name").innerText = product.name;
+        document.getElementById("prod-tagline").innerText = product.tagline;
+        document.getElementById("prod-img").src = product.image;
+        document.getElementById("prod-img").alt = product.name;
+        document.getElementById("prod-desc").innerText = product.description;
+        document.getElementById("prod-review").innerText = product.review;
+        document.getElementById("prod-btn").href = product.affiliateLink;
+      } else {
+        document.getElementById("prod-name").innerText = "Product Not Found";
+        document.getElementById("prod-tagline").innerText = "The product you are looking for doesn't exist or has been removed.";
+        document.getElementById("prod-img").parentElement.style.display = "none";
+        document.getElementById("prod-desc").style.display = "none";
+        document.getElementById("review-box").style.display = "none";
+        document.getElementById("prod-btn").style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
