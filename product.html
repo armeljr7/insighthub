@@ -52,6 +52,24 @@
           <p id="prod-review" style="color: #4b5563; font-size: 1rem; line-height: 1.5; margin: 0;"></p>
         </div>
 
+        <!-- Pros & Cons Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;" id="pros-cons-container">
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 1.5rem; border-radius: 8px;">
+            <h4 style="font-size: 1.1rem; color: #166534; margin-bottom: 0.75rem;">Pros</h4>
+            <ul id="prod-pros" style="color: #15803d; margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.5;"></ul>
+          </div>
+          <div style="background: #fef2f2; border: 1px solid #fecaca; padding: 1.5rem; border-radius: 8px;">
+            <h4 style="font-size: 1.1rem; color: #991b1b; margin-bottom: 0.75rem;">Cons</h4>
+            <ul id="prod-cons" style="color: #b91c1c; margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.5;"></ul>
+          </div>
+        </div>
+
+        <!-- Application Tips -->
+        <div id="tips-box" style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+          <h4 style="font-size: 1.1rem; color: #1e40af; margin-bottom: 0.75rem;">Application Tips:</h4>
+          <p id="prod-tips" style="color: #1e3a8a; font-size: 1rem; line-height: 1.5; margin: 0;"></p>
+        </div>
+
         <!-- Buy Button -->
         <a id="prod-btn" href="#" target="_blank" rel="noopener" style="display: block; text-align: center; background: #2563eb; color: white; padding: 1rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem;">Check Price on Amazon</a>
       
@@ -101,10 +119,21 @@
         image: "images/Maybelline.jpg",
         description: "Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.",
         review: "Customers find this mascara to be the best they've used, appreciating how it lengthens and thickens lashes while making them look fuller and longer. The product receives positive feedback for its appearance, with customers getting compliments on their eyelashes, and they consider it worth the price. While some customers say it doesn't go on clumpy and lasts all day without flaking, others report clumping and flaking issues. The removal experience is mixed, with some saying it comes off easily with soap and water while others find it super hard to remove.",
+        pros: [
+          "Lengthens and thickens lashes effectively",
+          "Flex tower brush reaches every lash",
+          "Long-lasting wear without major flaking for most users",
+          "Great value for the price"
+        ],
+        cons: [
+          "Can clump if too many coats are applied",
+          "Removal can sometimes require extra effort or specific makeup removers"
+        ],
+        tips: "Wipe excess product off the brush before applying to prevent clumping. Use the flexible tip of the brush to lift and define corner lashes.",
         affiliateLink: "https://amzn.to/4x9gh96"
       }
-      // When you add new products later, add them right here like this:
-      // "your-next-product": { name: "...", tagline: "...", image: "...", description: "...", review: "...", affiliateLink: "..." }
+      // Future products go here separated by a comma:
+      // "next-product-id": { name: "...", tagline: "...", image: "...", description: "...", review: "...", pros: [...], cons: [...], tips: "...", affiliateLink: "..." }
     };
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -120,13 +149,37 @@
         document.getElementById("prod-img").alt = product.name;
         document.getElementById("prod-desc").innerText = product.description;
         document.getElementById("prod-review").innerText = product.review;
+        
+        // Populate Pros
+        const prosList = document.getElementById("prod-pros");
+        prosList.innerHTML = "";
+        product.pros.forEach(pro => {
+          const li = document.createElement("li");
+          li.innerText = pro;
+          prosList.appendChild(li);
+        });
+
+        // Populate Cons
+        const consList = document.getElementById("prod-cons");
+        consList.innerHTML = "";
+        product.cons.forEach(con => {
+          const li = document.createElement("li");
+          li.innerText = con;
+          consList.appendChild(li);
+        });
+
+        // Populate Tips
+        document.getElementById("prod-tips").innerText = product.tips;
         document.getElementById("prod-btn").href = product.affiliateLink;
+
       } else {
         document.getElementById("prod-name").innerText = "Product Not Found";
         document.getElementById("prod-tagline").innerText = "The product you are looking for doesn't exist or has been removed.";
         document.getElementById("prod-img").parentElement.style.display = "none";
         document.getElementById("prod-desc").style.display = "none";
         document.getElementById("review-box").style.display = "none";
+        document.getElementById("pros-cons-container").style.display = "none";
+        document.getElementById("tips-box").style.display = "none";
         document.getElementById("prod-btn").style.display = "none";
       }
     });
