@@ -3,93 +3,243 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">Product Review — InsightHub</title>
-  <meta name="description" content="In-depth product review, pros, cons, and buying guide.">
-  <link rel="canonical" href="https://armeljr7.github.io/insighthub/product.html">
+  <title>InsightHub — Smart Insights. Better Buying Decisions.</title>
+  <meta name="description" content="InsightHub delivers honest product reviews, comparisons, and buying guides to help you make smarter purchasing decisions. Premium insights on tech, gaming, home, fitness & more.">
+  <meta name="keywords" content="product reviews, buying guides, comparisons, tech reviews, affiliate marketing, honest reviews">
+  <meta name="author" content="InsightHub">
+  <link rel="canonical" href="https://armeljr7.github.io/insighthub/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://armeljr7.github.io/insighthub/">
+  <meta property="og:title" content="InsightHub — Smart Insights. Better Buying Decisions.">
+  <meta property="og:description" content="Honest product reviews, comparisons, and buying guides for smarter purchasing decisions.">
+  <meta property="og:image" content="https://armeljr7.github.io/insighthub/images/og-image.png">
+  <meta property="og:site_name" content="InsightHub">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="InsightHub — Smart Insights. Better Buying Decisions.">
+  <meta name="twitter:description" content="Honest product reviews, comparisons, and buying guides for smarter purchasing decisions.">
+  <meta name="twitter:image" content="https://armeljr7.github.io/insighthub/images/og-image.png">
+  
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "InsightHub",
+    "url": "https://armeljr7.github.io/insighthub/",
+    "description": "Smart Insights. Better Buying Decisions. Honest product reviews and comparisons.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://armeljr7.github.io/insighthub/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </head>
 <body>
+  <!-- Navigation -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
-      
-      <!-- Search Bar Added to Navbar -->
-      <div class="nav-search" style="display: flex; align-items: center; background: #f3f4f6; border-radius: 6px; padding: 0.3rem 0.6rem; border: 1px solid #e5e7eb;">
-        <input type="text" id="site-search" placeholder="Search products..." style="border: none; background: transparent; outline: none; font-size: 0.9rem; color: #374151; width: 140px;">
-        <button id="search-btn" style="background: none; border: none; cursor: pointer; color: #2563eb; font-weight: 600; font-size: 0.9rem; padding-left: 4px;">🔍</button>
-      </div>
-
+      <a href="index.html" class="logo" aria-label="InsightHub Home">
+        <div class="logo-icon">IH</div>
+        <span>InsightHub</span>
+      </a>
       <div class="nav-links">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="reviews.html">Reviews</a>
         <a href="categories.html">Categories</a>
         <a href="comparison.html">Compare</a>
         <a href="trending.html">Trending</a>
         <a href="about.html">About</a>
+        <button class="search-btn" aria-label="Open search" title="Search (Ctrl+K)">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
       </div>
+      <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+  <div class="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="categories.html">Categories</a>
+    <a href="comparison.html">Compare</a>
+    <a href="trending.html">Trending</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
-  <header class="page-header">
-    <div class="container">
-      <h1 id="prod-name">Loading Product...</h1>
-      <p id="prod-tagline">Please wait while we fetch the review details.</p>
+  <!-- Search Overlay -->
+  <div class="search-overlay" role="dialog" aria-label="Search">
+    <button class="search-close" aria-label="Close search">&times;</button>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="search" id="site-search-input" placeholder="Search products, reviews, categories..." aria-label="Search products">
+      <div class="search-results" id="search-results-container"></div>
     </div>
-  </header>
+  </div>
 
-  <section class="section" style="padding-top: 0;">
-    <div class="container" style="max-width: 800px;">
-      <div style="background: #ffffff; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
-        
-        <!-- Product Image -->
-        <div style="width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; background: #f9fafb; border-radius: 8px;">
-          <img id="prod-img" src="" alt="Product Image" style="max-height: 100%; object-fit: contain; padding: 1rem;">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">✨ Trusted by 50,000+ smart shoppers</div>
+        <h1>Smart Insights.<br><span class="gradient">Better Buying Decisions.</span></h1>
+        <p>Honest reviews, side-by-side comparisons, and expert buying guides — so you never regret a purchase again.</p>
+        <div class="hero-actions">
+          <a href="reviews.html" class="btn btn-primary btn-glow">Explore Reviews</a>
+          <a href="comparison.html" class="btn btn-outline">Compare Products</a>
         </div>
-
-        <!-- Buy Button Right Under Image -->
-        <a id="prod-btn" href="#" target="_blank" rel="noopener" style="display: block; text-align: center; background: #2563eb; color: white; padding: 1rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem; margin-bottom: 2rem;">Check Price on Amazon</a>
-
-        <!-- Description -->
-        <p id="prod-desc" style="color: #4b5563; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;"></p>
-        
-        <!-- Overall Review Box -->
-        <div id="review-box" style="background: #f9fafb; border: 1px solid #e5e7eb; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-          <h4 style="font-size: 1.1rem; color: #111827; margin-bottom: 0.75rem;">Insights</h4>
-          <p id="prod-review" style="color: #4b5563; font-size: 1rem; line-height: 1.5; margin: 0; white-space: pre-line;"></p>
-        </div>
-
-        <!-- Pros & Cons Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;" id="pros-cons-container">
-          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 1.5rem; border-radius: 8px;">
-            <h4 style="font-size: 1.1rem; color: #166534; margin-bottom: 0.75rem;">Pros</h4>
-            <ul id="prod-pros" style="color: #15803d; margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.5;"></ul>
-          </div>
-          <div style="background: #fef2f2; border: 1px solid #fecaca; padding: 1.5rem; border-radius: 8px;">
-            <h4 style="font-size: 1.1rem; color: #991b1b; margin-bottom: 0.75rem;">Cons</h4>
-            <ul id="prod-cons" style="color: #b91c1c; margin: 0; padding-left: 1.25rem; font-size: 0.95rem; line-height: 1.5;"></ul>
-          </div>
-        </div>
-
-        <!-- Application Tips -->
-        <div id="tips-box" style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 1.5rem; border-radius: 8px; margin-bottom: 0;">
-          <h4 style="font-size: 1.1rem; color: #1e40af; margin-bottom: 0.75rem;">Application Tips:</h4>
-          <p id="prod-tips" style="color: #1e3a8a; font-size: 1rem; line-height: 1.5; margin: 0;"></p>
-        </div>
-      
       </div>
     </div>
   </section>
 
+  <!-- Featured Reviews -->
+  <section class="section" id="featured">
+    <div class="container">
+      <h2 class="section-title fade-in">Featured Reviews</h2>
+      <p class="section-subtitle fade-in">In-depth analysis of the products that matter most right now.</p>
+      
+      <!-- Custom Featured Reviews Container -->
+      <div class="grid-3" id="featured-reviews-container">
+        <!-- Product: Maybelline Lash Sensational Sky High -->
+        <article class="review-card fade-in" style="cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onclick="window.location.href='product.html?id=sky-high';" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <div style="width: 100%; height: 220px; background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+            <img src="images/Maybelline.jpg" alt="Maybelline Lash Sensational Sky High Washable Mascara" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
+          </div>
+
+          <div style="padding: 2rem;">
+            <span style="display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem;">Mascara & Beauty</span>
+            
+            <p style="color: #ffffff; margin-bottom: 1.5rem;">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
+            
+            <div style="background: #f9fafb; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+              <h4 style="font-size: 1rem; color: #111827; margin-bottom: 0.5rem;">Overall Review:</h4>
+              <div style="color: #4b5563; font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                <p style="margin: 0;">Customers find this mascara to be the best they've used, appreciating how it lengthens and thickens lashes while making them look fuller and longer...</p>
+              </div>
+            </div>
+
+            <a href="https://amzn.to/4x9gh96" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">Check Price on Amazon</a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Trending Products -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title fade-in">Trending Right Now</h2>
+      <p class="section-subtitle fade-in">What smart shoppers are looking at this week.</p>
+      
+      <!-- Synchronized Trending Grid Container -->
+      <div class="grid-4" id="trending-grid">
+        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 0;">
+          <h3>No Featured Trending Items</h3>
+          <p>Top products will display here automatically as traffic builds on your site.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="trending.html" class="btn btn-outline">View All Trending</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Preview -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Popular Comparisons</h2>
+      <p class="section-subtitle fade-in">Side-by-side data so you can decide with confidence.</p>
+      <div class="comparison-table-wrap fade-in">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Rating</th>
+              <th>Best For</th>
+              <th>Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="comparison-table-body">
+            <tr>
+              <td colspan="5" style="text-align: center; padding: 3rem 0;">
+                <h3>No Comparisons Added Yet</h3>
+                <p>Your comparison data rows will appear here as you update your site.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center mt-3">
+        <a href="comparison.html" class="btn btn-primary">See Full Comparisons</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Grid (Dynamic Injection) -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <div>
+          <h2 class="fade-in" style="margin-bottom: 0.5rem;">Browse by Category</h2>
+          <p class="section-subtitle fade-in" style="margin-bottom: 0;">Find the right product for your lifestyle.</p>
+        </div>
+        <a href="categories.html" class="view-all" style="font-weight: 600; color: var(--primary);">View All Categories &rarr;</a>
+      </div>
+      <!-- Dynamic Homepage Categories Container -->
+      <div class="grid-4" id="categories-grid"></div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section">
+    <div class="container">
+      <div class="newsletter fade-in">
+        <h2>Stay Ahead of the Curve</h2>
+        <p>Get weekly product insights, exclusive deals, and buying guides delivered to your inbox. No spam — ever.</p>
+        <form class="newsletter-form" action="#" method="post">
+          <input type="email" placeholder="Enter your email" required aria-label="Email address">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pinterest CTA -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="pinterest-cta fade-in">
+        <div class="pin-icon">📌</div>
+        <div class="pinterest-cta-content">
+          <h3>Pin It for Later</h3>
+          <p>Save our reviews and buying guides to your Pinterest boards. Perfect for research and inspiration.</p>
+        </div>
+        <a href="https://pin.it/2JGOQQx8C" class="btn btn-outline" target="_blank" rel="noopener" style="border-color:#E60023;color:#ff4d6a;">Follow on Pinterest</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
-          <p>Smart Insights. Better Buying Decisions.</p>
+          <p>Smart Insights. Better Buying Decisions. We help you buy with confidence through honest, data-driven reviews.</p>
         </div>
         <div class="footer-col">
           <h4>Explore</h4>
@@ -107,132 +257,59 @@
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
-          <a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+          <a href="https://pin.it/2JGOQQx8C" target="_blank" rel="noopener">Pinterest</a>
           <a href="contact.html">Newsletter</a>
+          <a href="disclosure.html">Terms</a>
         </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 InsightHub. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="https://pin.it/2JGOQQx8C" target="_blank" rel="noopener" aria-label="Pinterest">📌</a>
+          <a href="contact.html" aria-label="Email">✉</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Product Database & Dynamic Loader Script -->
+  <!-- Search Redirection Handler Script -->
   <script>
-    const products = {
-      "sky-high": {
-        name: "Maybelline Lash Sensational Sky High Washable Mascara",
-        tagline: "Full volume meets limitless length!",
-        image: "images/Maybelline.jpg",
-        description: "Maybelline Lash Sensational Sky High Washable Mascara is a high-quality, buildable mascara designed to deliver dramatic length, definition, volume, and lift without feeling overly heavy on the lashes. Its flexible brush is designed to reach even smaller lashes and coat them from root to tip, helping create a long, fanned-out appearance. The formula can be layered to customize the intensity, making it suitable for both natural everyday makeup and a more dramatic look. The washable formula also makes it easier to remove at the end of the day compared with many waterproof mascaras. Overall, it offers strong performance at an affordable price, making it a particularly appealing option for anyone who wants noticeably longer, defined lashes without investing in a luxury mascara.",
-        review: `💡 Buyer Insights:
-
-The biggest selling point is versatility: You can make your lashes look natural with one coat or much more dramatic with multiple coats.
-Length is its strongest feature: If your lashes are short or you want a noticeably longer look, this is where Sky High really shines.
-It’s especially good for an everyday mascara: You don't have to commit to a super-heavy, false-lash appearance.
-The flexible brush is a major advantage: It can reach smaller lashes and coat them from root to tip.
-It’s a great value: You’re getting a mascara that can compete with more expensive options without the luxury price tag.
-It may not satisfy extreme-volume lovers: If you want extremely thick, dense lashes, there are better mascaras specifically designed for volume.
-Layering matters: Two lighter coats generally give a prettier result than putting on one huge amount of product.
-Your eye shape matters: If you have oily eyelids or naturally watery eyes, you may experience some smudging even though the mascara performs well for many people.
-Washable vs. waterproof is an important decision: The washable version is easier to remove and better for everyday use, while waterproof is more appropriate if staying power is your priority.
-Best overall insight: Sky High is a “length-first, buildable” mascara. If you want long, defined, lifted lashes without spending a lot, it's one of the safer drugstore choices.`,
-        pros: [
-          "Lengthens and thickens lashes effectively",
-          "Flex tower brush reaches every lash",
-          "Long-lasting wear without major flaking for most users",
-          "Great value for the price"
-        ],
-        cons: [
-          "Can clump if too many coats are applied",
-          "Removal can sometimes require extra effort or specific makeup removers"
-        ],
-        tips: "For the best results with Maybelline Sky High, start with clean, dry lashes and wipe any excess mascara off the wand to prevent clumping. Place the wand at the roots of your upper lashes and gently wiggle it back and forth before slowly pulling it upward toward the tips. As you move upward, slightly angle the wand outward to create more length and lift. Use the tip of the wand to reach the smaller lashes in the inner and outer corners. For extra volume, focus on the roots, and for extra length, concentrate on slowly pulling the product all the way to the lash tips. Let the first coat dry slightly before applying a second thin coat, rather than applying one thick layer. For the lower lashes, use just the tip of the wand and apply a small amount to avoid smudging. Avoid pumping the wand repeatedly into the tube, since this can introduce air and dry out the mascara faster. For the most natural, long, separated look, one to two thin coats usually work best.",
-        affiliateLink: "https://amzn.to/4x9gh96"
-      }
-      // Future products go here separated by a comma:
-      // "next-product-id": { name: "...", tagline: "...", image: "...", description: "...", review: "...", pros: [...], cons: [...], tips: "...", affiliateLink: "..." }
+    const siteProducts = {
+      "sky-high": { name: "Maybelline Lash Sensational Sky High Washable Mascara" }
     };
 
     document.addEventListener("DOMContentLoaded", function() {
-      // 1. Search Functionality Logic
-      const searchInput = document.getElementById("site-search");
-      const searchBtn = document.getElementById("search-btn");
+      const searchInput = document.getElementById("site-search-input");
+      if (!searchInput) return;
 
-      function performSearch() {
+      function executeSearch() {
         const query = searchInput.value.toLowerCase().trim();
         if (!query) return;
 
-        // Simple matching logic checking product keys or names
-        let foundId = null;
-        for (const [id, data] of Object.entries(products)) {
+        let matchedId = null;
+        for (const [id, data] of Object.entries(siteProducts)) {
           if (id.toLowerCase().includes(query) || data.name.toLowerCase().includes(query)) {
-            foundId = id;
+            matchedId = id;
             break;
           }
         }
 
-        if (foundId) {
-          window.location.href = `product.html?id=${foundId}`;
+        if (matchedId) {
+          window.location.href = `product.html?id=${matchedId}`;
         } else {
           alert("No matching product found!");
         }
       }
 
-      searchBtn.addEventListener("click", performSearch);
       searchInput.addEventListener("keypress", function(e) {
         if (e.key === "Enter") {
-          performSearch();
+          e.preventDefault();
+          executeSearch();
         }
       });
-
-      // 2. Product Loader Logic
-      const urlParams = new URLSearchParams(window.location.search);
-      const productId = urlParams.get("id") || "sky-high";
-      const product = products[productId];
-
-      if (product) {
-        document.getElementById("page-title").innerText = product.name + " — InsightHub";
-        document.getElementById("prod-name").innerText = product.name;
-        document.getElementById("prod-tagline").innerText = product.tagline;
-        document.getElementById("prod-img").src = product.image;
-        document.getElementById("prod-img").alt = product.name;
-        document.getElementById("prod-desc").innerText = product.description;
-        document.getElementById("prod-review").innerText = product.review;
-        
-        // Populate Pros
-        const prosList = document.getElementById("prod-pros");
-        prosList.innerHTML = "";
-        product.pros.forEach(pro => {
-          const li = document.createElement("li");
-          li.innerText = pro;
-          prosList.appendChild(li);
-        });
-
-        // Populate Cons
-        const consList = document.getElementById("prod-cons");
-        consList.innerHTML = "";
-        product.cons.forEach(con => {
-          const li = document.createElement("li");
-          li.innerText = con;
-          consList.appendChild(li);
-        });
-
-        // Populate Tips
-        document.getElementById("prod-tips").innerText = product.tips;
-        document.getElementById("prod-btn").href = product.affiliateLink;
-
-      } else {
-        document.getElementById("prod-name").innerText = "Product Not Found";
-        document.getElementById("prod-tagline").innerText = "The product you are looking for doesn't exist or has been removed.";
-        document.getElementById("prod-img").parentElement.style.display = "none";
-        document.getElementById("prod-btn").style.display = "none";
-        document.getElementById("prod-desc").style.display = "none";
-        document.getElementById("review-box").style.display = "none";
-        document.getElementById("pros-cons-container").style.display = "none";
-        document.getElementById("tips-box").style.display = "none";
-      }
     });
   </script>
+
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>
