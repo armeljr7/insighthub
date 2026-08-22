@@ -125,22 +125,7 @@ const db = getFirestore(app);
     if (!searchBtn || !searchOverlay) return;
 
     const products = [
-      { title: 'Maybelline Lash Sensational Sky High Mascara', category: 'Lifestyle', page: 'product.html?id=sky-high', rating: 4.8, price: '$11.49' },
-      { title: 'Sony WH-1000XM5 Headphones', category: 'Audio', page: 'reviews.html', rating: 9.4, price: '$348' },
-      { title: 'Apple MacBook Pro 14" M3', category: 'Tech', page: 'reviews.html', rating: 9.6, price: '$1,599' },
-      { title: 'Nintendo Switch OLED', category: 'Gaming', page: 'reviews.html', rating: 9.2, price: '$349' },
-      { title: 'Dyson V15 Detect Vacuum', category: 'Home', page: 'reviews.html', rating: 9.1, price: '$749' },
-      { title: 'Peloton Bike+', category: 'Fitness', page: 'reviews.html', rating: 8.9, price: '$2,495' },
-      { title: 'Herman Miller Aeron Chair', category: 'Office', page: 'reviews.html', rating: 9.5, price: '$1,445' },
-      { title: 'iPhone 16 Pro Max', category: 'Mobile', page: 'reviews.html', rating: 9.3, price: '$1,199' },
-      { title: 'Samsung Galaxy S25 Ultra', category: 'Mobile', page: 'reviews.html', rating: 9.2, price: '$1,299' },
-      { title: 'Bose QuietComfort Ultra', category: 'Audio', page: 'reviews.html', rating: 9.0, price: '$429' },
-      { title: 'LG C3 OLED TV 65"', category: 'Tech', page: 'reviews.html', rating: 9.4, price: '$1,799' },
-      { title: 'Logitech MX Master 3S', category: 'Office', page: 'reviews.html', rating: 9.1, price: '$99' },
-      { title: 'Garmin Fenix 8', category: 'Fitness', page: 'reviews.html', rating: 9.0, price: '$999' },
-      { title: 'Steam Deck OLED', category: 'Gaming', page: 'reviews.html', rating: 9.3, price: '$549' },
-      { title: 'Kindle Paperwhite Signature', category: 'Lifestyle', page: 'reviews.html', rating: 9.0, price: '$189' },
-      { title: 'Ninja Creami Ice Cream Maker', category: 'Home', page: 'reviews.html', rating: 8.7, price: '$199' }
+      { title: 'Maybelline Lash Sensational Sky High Mascara', category: 'Lifestyle', page: 'product.html?id=sky-high', rating: 4.8, price: '$11.49' }
     ];
 
     function openSearch() {
