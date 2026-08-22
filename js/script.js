@@ -125,7 +125,7 @@ const db = getFirestore(app);
     if (!searchBtn || !searchOverlay) return;
 
     const products = [
-      { title: 'Maybelline Lash Sensational Sky High Mascara', category: 'Lifestyle', page: 'product.html?id=sky-high', rating: 4.8, price: '$11.49' }
+      { title: 'Maybelline Lash Sensational Sky High Mascara', category: 'Lifestyle', page: 'product.html?id=sky-high', rating: 4.5, price: '$10.82' }
     ];
 
     function openSearch() {
