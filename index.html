@@ -84,8 +84,8 @@
     <button class="search-close" aria-label="Close search">&times;</button>
     <div class="search-box">
       <span class="search-icon">🔍</span>
-      <input type="search" id="site-search-input" placeholder="Search products, reviews, categories..." aria-label="Search products">
-      <div class="search-results" id="search-results-container"></div>
+      <input type="search" placeholder="Search products, reviews, categories..." aria-label="Search products">
+      <div class="search-results"></div>
     </div>
   </div>
 
@@ -272,39 +272,50 @@
     </div>
   </footer>
 
-  <!-- Search Redirection Handler Script -->
+  <!-- Inline Search Overlay Dropdown & Redirection Script -->
   <script>
     const siteProducts = {
       "sky-high": { name: "Maybelline Lash Sensational Sky High Washable Mascara" }
     };
 
     document.addEventListener("DOMContentLoaded", function() {
-      const searchInput = document.getElementById("site-search-input");
+      const searchInput = document.querySelector(".search-box input[type='search']");
+      const searchResults = document.querySelector(".search-results");
+
       if (!searchInput) return;
 
-      function executeSearch() {
+      searchInput.addEventListener("input", function() {
         const query = searchInput.value.toLowerCase().trim();
-        if (!query) return;
+        if (!query) {
+          searchResults.innerHTML = "";
+          return;
+        }
 
-        let matchedId = null;
+        let html = "";
         for (const [id, data] of Object.entries(siteProducts)) {
           if (id.toLowerCase().includes(query) || data.name.toLowerCase().includes(query)) {
-            matchedId = id;
-            break;
+            html += `<a href="product.html?id=${id}" style="display: block; padding: 0.75rem 1rem; color: #111827; text-decoration: none; border-bottom: 1px solid #e5e7eb;">${data.name}</a>`;
           }
         }
 
-        if (matchedId) {
-          window.location.href = `product.html?id=${matchedId}`;
-        } else {
-          alert("No matching product found!");
+        if (html === "") {
+          html = `<div style="padding: 0.75rem 1rem; color: #6b7280;">No products found</div>`;
         }
-      }
+
+        searchResults.innerHTML = html;
+      });
 
       searchInput.addEventListener("keypress", function(e) {
         if (e.key === "Enter") {
           e.preventDefault();
-          executeSearch();
+          const query = searchInput.value.toLowerCase().trim();
+          for (const [id, data] of Object.entries(siteProducts)) {
+            if (id.toLowerCase().includes(query) || data.name.toLowerCase().includes(query)) {
+              window.location.href = `product.html?id=${id}`;
+              return;
+            }
+          }
+          alert("No matching product found!");
         }
       });
     });
