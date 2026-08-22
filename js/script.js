@@ -125,6 +125,7 @@ const db = getFirestore(app);
     if (!searchBtn || !searchOverlay) return;
 
     const products = [
+      { title: 'Maybelline Lash Sensational Sky High Mascara', category: 'Lifestyle', page: 'product.html?id=sky-high', rating: 4.8, price: '$11.49' },
       { title: 'Sony WH-1000XM5 Headphones', category: 'Audio', page: 'reviews.html', rating: 9.4, price: '$348' },
       { title: 'Apple MacBook Pro 14" M3', category: 'Tech', page: 'reviews.html', rating: 9.6, price: '$1,599' },
       { title: 'Nintendo Switch OLED', category: 'Gaming', page: 'reviews.html', rating: 9.2, price: '$349' },
