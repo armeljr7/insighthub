@@ -1,19 +1,19 @@
 /* ============================================
-   InsightHub - Vanilla JavaScript
-   Client-side search, navigation, animations
-   ============================================ */
+   InsightHub - Vanilla JavaScript
+   Client-side search, navigation, animations
+   ============================================ */
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // Your exact Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCCkXX5Rh8PC3lEP3qaLo4QdaQfYhPxJ6o",
-  authDomain: "qweezapp.firebaseapp.com",
-  projectId: "qweezapp",
-  storageBucket: "qweezapp.firebasestorage.app",
-  messagingSenderId: "457441532263",
-  appId: "1:457441532263:web:f523ac0b301a283b4177c2"
+  apiKey: "AIzaSyCCkXX5Rh8PC3lEP3qaLo4QdaQfYhPxJ6o",
+  authDomain: "qweezapp.firebaseapp.com",
+  projectId: "qweezapp",
+  storageBucket: "qweezapp.firebasestorage.app",
+  messagingSenderId: "457441532263",
+  appId: "1:457441532263:web:f523ac0b301a283b4177c2"
 };
 
 // Initialize Firebase
@@ -21,310 +21,293 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 (function () {
-  'use strict';
+  'use strict';
 
-  // ---------- DOM Ready ----------
-  document.addEventListener('DOMContentLoaded', init);
+  // ---------- DOM Ready ----------
+  document.addEventListener('DOMContentLoaded', init);
 
-  function init() {
-    setupNavigation();
-    setupSearch();
-    setupCategories();
-    setupScrollEffects();
-    setupFadeInAnimations();
-    setupFilters();
-    setupNewsletter();
-    setupSmoothScroll();
-  }
+  function init() {
+    setupNavigation();
+    setupSearch();
+    setupCategories();
+    setupScrollEffects();
+    setupFadeInAnimations();
+    setupFilters();
+    setupNewsletter();
+    setupSmoothScroll();
+  }
 
-  // ---------- Dynamic Categories ----------
-  function setupCategories() {
-    const defaultCategories = [
-      { name: "Tech", slug: "tech", icon: "💻", desc: "Laptops, monitors, TVs, tablets, and the latest gadgets." },
-      { name: "Gaming", slug: "gaming", icon: "🎮", desc: "Consoles & accessories" },
-      { name: "Home", slug: "home", icon: "🏠", desc: "Smart home & appliances" },
-      { name: "Fitness", slug: "fitness", icon: "💪", desc: "Wearables & equipment" },
-      { name: "Office", slug: "office", icon: "🪑", desc: "Chairs, desks & gear" },
-      { name: "Mobile", slug: "mobile", icon: "📱", desc: "Phones & accessories" },
-      { name: "Audio", slug: "audio", icon: "🎧", desc: "Headphones & speakers" },
-      { name: "Lifestyle", slug: "lifestyle", icon: "✨", desc: "Everyday essentials" }
-    ];
+  // ---------- Dynamic Categories ----------
+  function setupCategories() {
+    const defaultCategories = [
+      { name: "Tech", slug: "tech", icon: "💻", desc: "Laptops, monitors, TVs, tablets, and the latest gadgets." },
+      { name: "Gaming", slug: "gaming", icon: "🎮", desc: "Consoles & accessories" },
+      { name: "Home", slug: "home", icon: "🏠", desc: "Smart home & appliances" },
+      { name: "Fitness", slug: "fitness", icon: "💪", desc: "Wearables & equipment" },
+      { name: "Office", slug: "office", icon: "🪑", desc: "Chairs, desks & gear" },
+      { name: "Mobile", slug: "mobile", icon: "📱", desc: "Phones & accessories" },
+      { name: "Audio", slug: "audio", icon: "🎧", desc: "Headphones & speakers" },
+      { name: "Lifestyle", slug: "lifestyle", icon: "✨", desc: "Everyday essentials" }
+    ];
 
-    let categoriesData = JSON.parse(localStorage.getItem('insighthub_categories'));
-    if (!categoriesData) {
-      categoriesData = defaultCategories;
-      localStorage.setItem('insighthub_categories', JSON.stringify(categoriesData));
-    }
+    let categoriesData = JSON.parse(localStorage.getItem('insighthub_categories'));
+    if (!categoriesData) {
+      categoriesData = defaultCategories;
+      localStorage.setItem('insighthub_categories', JSON.stringify(categoriesData));
+    }
 
-    function renderCategories(containerId) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
+    function renderCategories(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
 
-      container.innerHTML = categoriesData.map(function(cat) {
-        return '<a href="reviews.html?category=' + cat.slug + '" class="category-card fade-in" data-category="' + cat.slug + '">' +
-          '<div class="category-icon">' + cat.icon + '</div>' +
-          '<h3>' + cat.name + '</h3>' +
-          '<p>' + cat.desc + '</p>' +
-          '</a>';
-      }).join('');
-    }
+      container.innerHTML = categoriesData.map(function(cat) {
+        return '<a href="reviews.html?category=' + cat.slug + '" class="category-card fade-in" data-category="' + cat.slug + '">' +
+          '<div class="category-icon">' + cat.icon + '</div>' +
+          '<h3>' + cat.name + '</h3>' +
+          '<p>' + cat.desc + '</p>' +
+          '</a>';
+      }).join('');
+    }
 
-    renderCategories("categories-grid");
-    renderCategories("categories-page-grid");
-  }
+    renderCategories("categories-grid");
+    renderCategories("categories-page-grid");
+  }
 
-  // ---------- Navigation ----------
-  function setupNavigation() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileNav = document.querySelector('.mobile-nav');
-    const navbar = document.querySelector('.navbar');
+  // ---------- Navigation ----------
+  function setupNavigation() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const navbar = document.querySelector('.navbar');
 
-    if (menuToggle && mobileNav) {
-      menuToggle.addEventListener('click', function () {
-        menuToggle.classList.toggle('active');
-        mobileNav.classList.toggle('open');
-        document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
-      });
+    if (menuToggle && mobileNav) {
+      menuToggle.addEventListener('click', function () {
+        menuToggle.classList.toggle('active');
+        mobileNav.classList.toggle('open');
+        document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+      });
 
-      mobileNav.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          menuToggle.classList.remove('active');
-          mobileNav.classList.remove('open');
-          document.body.style.overflow = '';
-        });
-      });
-    }
+      mobileNav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menuToggle.classList.remove('active');
+          mobileNav.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+    }
 
-    if (navbar) {
-      window.addEventListener('scroll', function () {
-        if (window.scrollY > 20) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-      });
-    }
+    if (navbar) {
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 20) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    }
 
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(function (link) {
-      const href = link.getAttribute('href');
-      if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-        link.classList.add('active');
-      }
-    });
-  }
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(function (link) {
+      const href = link.getAttribute('href');
+      if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+        link.classList.add('active');
+      }
+    });
+  }
 
-  // ---------- Search (Dynamic DOM Scanner) ----------
-  function setupSearch() {
-    const searchBtn = document.querySelector('.search-btn');
-    const searchOverlay = document.querySelector('.search-overlay');
-    const searchClose = document.querySelector('.search-close');
-    const searchInput = document.querySelector('.search-box input');
-    const searchResults = document.querySelector('.search-results');
+  // ---------- Search ----------
+  function setupSearch() {
+    const searchBtn = document.querySelector('.search-btn');
+    const searchOverlay = document.querySelector('.search-overlay');
+    const searchClose = document.querySelector('.search-close');
+    const searchInput = document.querySelector('.search-box input');
+    const searchResults = document.querySelector('.search-results');
 
-    if (!searchBtn || !searchOverlay) return;
+    if (!searchBtn || !searchOverlay) return;
 
-    function openSearch() {
-      searchOverlay.classList.add('active');
-      if (searchInput) {
-        setTimeout(function () { searchInput.focus(); }, 100);
-      }
-      document.body.style.overflow = 'hidden';
-    }
+    const products = [
+      { title: 'Maybelline Lash Sensational Sky High Mascara', category: 'Lifestyle', page: 'product.html?id=sky-high', rating: 4.5, price: '$10.82' }
+    ];
 
-    function closeSearch() {
-      searchOverlay.classList.remove('active');
-      if (searchInput) searchInput.value = '';
-      if (searchResults) {
-        searchResults.classList.remove('active');
-        searchResults.innerHTML = '';
-      }
-      document.body.style.overflow = '';
-    }
+    function openSearch() {
+      searchOverlay.classList.add('active');
+      if (searchInput) {
+        setTimeout(function () { searchInput.focus(); }, 100);
+      }
+      document.body.style.overflow = 'hidden';
+    }
 
-    searchBtn.addEventListener('click', openSearch);
-    if (searchClose) searchClose.addEventListener('click', closeSearch);
+    function closeSearch() {
+      searchOverlay.classList.remove('active');
+      if (searchInput) searchInput.value = '';
+      if (searchResults) {
+        searchResults.classList.remove('active');
+        searchResults.innerHTML = '';
+      }
+      document.body.style.overflow = '';
+    }
 
-    searchOverlay.addEventListener('click', function (e) {
-      if (e.target === searchOverlay) closeSearch();
-    });
+    searchBtn.addEventListener('click', openSearch);
+    if (searchClose) searchClose.addEventListener('click', closeSearch);
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeSearch();
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        openSearch();
-      }
-    });
+    searchOverlay.addEventListener('click', function (e) {
+      if (e.target === searchOverlay) closeSearch();
+    });
 
-    if (searchInput && searchResults) {
-      searchInput.addEventListener('input', function () {
-        const query = this.value.trim().toLowerCase();
-        if (query.length < 2) {
-          searchResults.classList.remove('active');
-          searchResults.innerHTML = '';
-          return;
-        }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeSearch();
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        openSearch();
+      }
+    });
 
-        const cards = document.querySelectorAll('.review-card');
-        let matches = [];
+    if (searchInput && searchResults) {
+      searchInput.addEventListener('input', function () {
+        const query = this.value.trim().toLowerCase();
+        if (query.length < 2) {
+          searchResults.classList.remove('active');
+          searchResults.innerHTML = '';
+          return;
+        }
 
-        cards.forEach(card => {
-          const textContent = card.textContent.toLowerCase();
-          const category = card.getAttribute('data-category') || '';
-          
-          const img = card.querySelector('img');
-          const title = img ? img.alt : (card.querySelector('h3, h4')?.textContent || 'Product Review');
-          const onclickAttr = card.getAttribute('onclick') || '';
-          
-          let productPage = 'reviews.html';
-          if (onclickAttr.includes('product.html')) {
-            const match = onclickAttr.match(/product\.html\?id=[\w-]+/);
-            if (match) productPage = match[0];
-          }
+        const matches = products.filter(function (p) {
+          return p.title.toLowerCase().indexOf(query) !== -1 ||
+                 p.category.toLowerCase().indexOf(query) !== -1;
+        });
 
-          if (textContent.includes(query) || category.includes(query)) {
-            matches.push({
-              title: title,
-              category: category,
-              page: productPage
-            });
-          }
-        });
+        if (matches.length === 0) {
+          searchResults.innerHTML = '<div class="search-result-item">No results found for "' + this.value + '"</div>';
+        } else {
+          searchResults.innerHTML = matches.map(function (p) {
+            return '<a href="' + p.page + '" class="search-result-item" style="display:block;text-decoration:none;color:inherit;">' +
+              '<strong>' + p.title + '</strong><br>' +
+              '<span style="color:var(--text-muted);font-size:0.85rem;">' + p.category + ' · ★ ' + p.rating + ' · ' + p.price + '</span>' +
+              '</a>';
+          }).join('');
+        }
+        searchResults.classList.add('active');
+      });
+    }
+  }
 
-        if (matches.length === 0) {
-          searchResults.innerHTML = '<div class="search-result-item" style="padding: 1rem; color: var(--text-muted); cursor: default;">No results found for "' + this.value + '"</div>';
-        } else {
-          searchResults.innerHTML = matches.map(function (p) {
-            return '<a href="' + p.page + '" class="search-result-item">' +
-              '<strong>' + p.title + '</strong><br>' +
-              '<span style="color:var(--text-muted); font-size:0.85rem; text-transform: capitalize;">Category: ' + p.category + '</span>' +
-              '</a>';
-          }).join('');
-        }
-        searchResults.classList.add('active');
-      });
-    }
-  }
+  // ---------- Scroll Effects ----------
+  function setupScrollEffects() {}
 
-  // ---------- Scroll Effects ----------
-  function setupScrollEffects() {}
+  // ---------- Fade-in Animations ----------
+  function setupFadeInAnimations() {
+    const elements = document.querySelectorAll('.fade-in');
+    if (!elements.length) return;
 
-  // ---------- Fade-in Animations ----------
-  function setupFadeInAnimations() {
-    const elements = document.querySelectorAll('.fade-in');
-    if (!elements.length) return;
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      elements.forEach(function (el) {
+        observer.observe(el);
+      });
+    } else {
+      elements.forEach(function (el) {
+        el.classList.add('visible');
+      });
+    }
+  }
 
-      elements.forEach(function (el) {
-        observer.observe(el);
-      });
-    } else {
-      elements.forEach(function (el) {
-        el.classList.add('visible');
-      });
-    }
-  }
+  // ---------- Category / Review Filters ----------
+  function setupFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterableItems = document.querySelectorAll('[data-category]');
 
-  // ---------- Category / Review Filters ----------
-  function setupFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const filterableItems = document.querySelectorAll('[data-category]');
+    if (!filterBtns.length) return;
 
-    if (!filterBtns.length) return;
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
 
-    filterBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        filterBtns.forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
 
-        const filter = btn.getAttribute('data-filter');
+        filterableItems.forEach(function (item) {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = '';
+            setTimeout(function () {
+              item.classList.add('visible');
+            }, 10);
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
 
-        filterableItems.forEach(function (item) {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.display = '';
-            setTimeout(function () {
-              item.classList.add('visible');
-            }, 10);
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
-  }
+  // ---------- Newsletter (Firebase Firestore) ----------
+  function setupNewsletter() {
+    const forms = document.querySelectorAll('.newsletter-form');
+    forms.forEach(function (form) {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const input = form.querySelector('input[type="email"]');
+        
+        if (input && input.value.trim()) {
+          const email = input.value.trim();
+          const btn = form.querySelector('button');
+          const originalText = btn ? btn.textContent : '';
+          
+          if (btn) {
+            btn.textContent = 'Subscribing...';
+            btn.disabled = true;
+          }
 
-  // ---------- Newsletter (Firebase Firestore) ----------
-  function setupNewsletter() {
-    const forms = document.querySelectorAll('.newsletter-form');
-    forms.forEach(function (form) {
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const input = form.querySelector('input[type="email"]');
-        
-        if (input && input.value.trim()) {
-          const email = input.value.trim();
-          const btn = form.querySelector('button');
-          const originalText = btn ? btn.textContent : '';
-          
-          if (btn) {
-            btn.textContent = 'Subscribing...';
-            btn.disabled = true;
-          }
+          try {
+            await addDoc(collection(db, "subscribers"), {
+              email: email,
+              subscribedAt: serverTimestamp()
+            });
 
-          try {
-            await addDoc(collection(db, "subscribers"), {
-              email: email,
-              subscribedAt: serverTimestamp()
-            });
+            if (btn) {
+              btn.textContent = 'Subscribed!';
+            }
+            input.value = '';
 
-            if (btn) {
-              btn.textContent = 'Subscribed!';
-            }
-            input.value = '';
+            setTimeout(function () {
+              if (btn) {
+                btn.textContent = originalText;
+                btn.disabled = false;
+              }
+            }, 3000);
 
-            setTimeout(function () {
-              if (btn) {
-                btn.textContent = originalText;
-                btn.disabled = false;
-              }
-            }, 3000);
+          } catch (error) {
+            console.error("Error saving subscriber: ", error);
+            alert("Something went wrong. Please try again.");
+            if (btn) {
+              btn.textContent = originalText;
+              btn.disabled = false;
+            }
+          }
+        }
+      });
+    });
+  }
 
-          } catch (error) {
-            console.error("Error saving subscriber: ", error);
-            alert("Something went wrong. Please try again.");
-            if (btn) {
-              btn.textContent = originalText;
-              btn.disabled = false;
-            }
-          }
-        }
-      });
-    });
-  }
-
-  // ---------- Smooth Scroll ----------
-  function setupSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        const target = document.querySelector(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-  }
+  // ---------- Smooth Scroll ----------
+  function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
 
 })();
