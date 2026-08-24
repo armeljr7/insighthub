@@ -114,7 +114,7 @@ const db = getFirestore(app);
     });
   }
 
-  // ---------- Search ----------
+  // ---------- Search (Dynamic DOM Scanner) ----------
   function setupSearch() {
     const searchBtn = document.querySelector('.search-btn');
     const searchOverlay = document.querySelector('.search-overlay');
@@ -123,10 +123,6 @@ const db = getFirestore(app);
     const searchResults = document.querySelector('.search-results');
 
     if (!searchBtn || !searchOverlay) return;
-
-    const products = [
-      { title: 'Maybelline Lash Sensational Sky High Mascara', category: 'Lifestyle', page: 'product.html?id=sky-high', rating: 4.5, price: '$10.82' }
-    ];
 
     function openSearch() {
       searchOverlay.classList.add('active');
@@ -170,18 +166,39 @@ const db = getFirestore(app);
           return;
         }
 
-        const matches = products.filter(function (p) {
-          return p.title.toLowerCase().indexOf(query) !== -1 ||
-                 p.category.toLowerCase().indexOf(query) !== -1;
+        const cards = document.querySelectorAll('.review-card');
+        let matches = [];
+
+        cards.forEach(card => {
+          const textContent = card.textContent.toLowerCase();
+          const category = card.getAttribute('data-category') || '';
+          
+          const img = card.querySelector('img');
+          const title = img ? img.alt : (card.querySelector('h3, h4')?.textContent || 'Product Review');
+          const onclickAttr = card.getAttribute('onclick') || '';
+          
+          let productPage = 'reviews.html';
+          if (onclickAttr.includes('product.html')) {
+            const match = onclickAttr.match(/product\.html\?id=[\w-]+/);
+            if (match) productPage = match[0];
+          }
+
+          if (textContent.includes(query) || category.includes(query)) {
+            matches.push({
+              title: title,
+              category: category,
+              page: productPage
+            });
+          }
         });
 
         if (matches.length === 0) {
-          searchResults.innerHTML = '<div class="search-result-item">No results found for "' + this.value + '"</div>';
+          searchResults.innerHTML = '<div class="search-result-item" style="padding: 1rem; color: var(--text-muted); cursor: default;">No results found for "' + this.value + '"</div>';
         } else {
           searchResults.innerHTML = matches.map(function (p) {
-            return '<a href="' + p.page + '" class="search-result-item" style="display:block;text-decoration:none;color:inherit;">' +
+            return '<a href="' + p.page + '" class="search-result-item">' +
               '<strong>' + p.title + '</strong><br>' +
-              '<span style="color:var(--text-muted);font-size:0.85rem;">' + p.category + ' · ★ ' + p.rating + ' · ' + p.price + '</span>' +
+              '<span style="color:var(--text-muted); font-size:0.85rem; text-transform: capitalize;">Category: ' + p.category + '</span>' +
               '</a>';
           }).join('');
         }
