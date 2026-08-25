@@ -1,344 +1,149 @@
-Conversation with Gemini
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Product Reviews — InsightHub</title>
-
   <meta name="description" content="In-depth product reviews with pros, cons, ratings, and verdicts. Honest analysis to help you buy smarter.">
-
   <link rel="canonical" href="https://armeljr7.github.io/insighthub/reviews.html">
-
   <meta property="og:title" content="Product Reviews — InsightHub">
-
   <meta property="og:description" content="In-depth product reviews with honest ratings and verdicts.">
-
   <meta property="og:type" content="website">
-
   <meta property="og:url" content="https://armeljr7.github.io/insighthub/reviews.html">
-
   <meta name="twitter:card" content="summary_large_image">
-
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
-
   <script type="application/ld+json">
-
   {
-
     "@context": "https://schema.org",
-
     "@type": "CollectionPage",
-
     "name": "Product Reviews — InsightHub",
-
     "description": "In-depth product reviews with honest ratings and verdicts."
-
   }
-
   </script>
-
 </head>
-
 <body>
-
   <nav class="navbar" role="navigation" aria-label="Main navigation">
-
     <div class="nav-container">
-
-      <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
-
+      <a href="index.html" class="logo">
+        <div class="logo-icon">IH</div><span>InsightHub</span>
+      </a>
       <div class="nav-links">
-
         <a href="index.html">Home</a>
-
         <a href="reviews.html" class="active">Reviews</a>
-
         <a href="categories.html">Categories</a>
-
         <a href="comparison.html">Compare</a>
-
         <a href="trending.html">Trending</a>
-
         <a href="about.html">About</a>
-
         <button class="search-btn" aria-label="Open search"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
-
       </div>
-
       <button class="menu-toggle" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button>
-
     </div>
-
   </nav>
 
-
-
   <div class="mobile-nav">
-
     <a href="index.html">Home</a>
-
     <a href="reviews.html">Reviews</a>
-
     <a href="categories.html">Categories</a>
-
     <a href="comparison.html">Compare</a>
-
     <a href="trending.html">Trending</a>
-
     <a href="about.html">About</a>
-
     <a href="contact.html">Contact</a>
-
   </div>
-
-
 
   <div class="search-overlay" role="dialog" aria-label="Search">
-
     <button class="search-close" aria-label="Close search">&times;</button>
-
     <div class="search-box">
-
       <span class="search-icon">🔍</span>
-
       <input type="search" placeholder="Search products, reviews, categories..." aria-label="Search products">
-
       <div class="search-results"></div>
-
     </div>
-
   </div>
 
-
-
   <header class="page-header">
-
     <div class="container">
-
       <h1>Product Reviews</h1>
-
       <p>Honest, detailed analysis of the products that matter. Every review includes ratings, pros, cons, and a clear verdict.</p>
-
     </div>
-
   </header>
 
-
-
   <section class="section" style="padding-top: 0;">
-
     <div class="container">
-
       <div class="filters">
-
         <button class="filter-btn active" data-filter="all">All</button>
-
         <button class="filter-btn" data-filter="mascara">Mascara</button>
-
         <button class="filter-btn" data-filter="lipstick">Lipstick</button>
-
         <button class="filter-btn" data-filter="foundation">Foundation</button>
-
         <button class="filter-btn" data-filter="skincare">Skincare</button>
-
         <button class="filter-btn" data-filter="eyes">Eyes</button>
-
         <button class="filter-btn" data-filter="brows">Brows</button>
-
         <button class="filter-btn" data-filter="palettes">Palettes</button>
-
         <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
-
       </div>
-
-
 
       <div class="affiliate-disclaimer">
-
         <strong>Affiliate Disclosure:</strong> InsightHub may earn a commission when you purchase through links on this page at no extra cost to you. This helps us keep our reviews independent and free. <a href="disclosure.html">Learn more</a>.
-
       </div>
 
-
-
-      <div class="grid-3" id="reviews-container" data-loaded="true">
-
+      <div class="grid-3" id="reviews-container">
         <!-- Product: Maybelline Lash Sensational Sky High -->
-
-        <article class="review-card fade-in" data-category="mascara" style="display: block !important; visibility: visible !important; opacity: 1 !important; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onclick="window.location.href='product.html?id=sky-high';" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-
-          <div style="width: 100%; height: 220px; background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-
+        <article class="review-card fade-in visible" data-category="mascara" onclick="window.location.href='product.html?id=sky-high';">
+          <div class="review-card-image" style="width: 100%; height: 220px; background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px;">
             <img src="images/Maybelline.jpg" alt="Maybelline Lash Sensational Sky High Washable Mascara" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
-
           </div>
 
-
-
-          <!-- Properly Wrapped Card Content -->
-
-          <div style="padding: 1.5rem;">
-
-            <p style="color: #ffffff; margin-bottom: 1.5rem;">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
-
+          <div class="review-card-content" style="padding: 1.5rem;">
+            <h3 style="font-size: 1.25rem; color: #ffffff; margin-bottom: 0.75rem;">Maybelline Lash Sensational Sky High Mascara</h3>
+            <p style="color: #94a3b8; margin-bottom: 1.5rem;">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
             
-
-            <div style="background: #f9fafb; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-
-              <h4 style="font-size: 1rem; color: #111827; margin-bottom: 0.5rem;">Overall Review:</h4>
-
-              <div style="color: #4b5563; font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.75rem;">
-
-                <p style="margin: 0;">Customers find this mascara to be the best they've used, appreciating how it lengthens and thickens lashes while making them look fuller and longer. The product receives positive feedback for its appearance, with customers getting compliments on their eyelashes, and they consider it worth the price. While some customers say it doesn't go on clumpy and lasts all day without flaking, others report clumping and flaking issues. The removal experience is mixed, with some saying it comes off easily with soap and water while others find it super hard to remove.</p>
-
-              </div>
-
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+              <h4 style="font-size: 1rem; color: #ffffff; margin-bottom: 0.5rem;">Overall Review:</h4>
+              <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">Customers find this mascara to be the best they've used, appreciating how it lengthens and thickens lashes while making them look fuller and longer. The product receives positive feedback for its appearance, with customers getting compliments on their eyelashes, and they consider it worth the price.</p>
             </div>
 
-
-
-            <a href="https://amzn.to/4x9gh96" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">Check Price on Amazon</a>
-
+            <a href="https://amzn.to/4x9gh96" target="_blank" rel="noopener" onclick="event.stopPropagation();" class="btn-primary" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">Check Price on Amazon</a>
           </div>
-
         </article>
-
       </div>
-
     </div>
-
   </section>
 
-
-
   <footer class="footer">
-
     <div class="container">
-
       <div class="footer-grid">
-
         <div class="footer-brand">
-
           <a href="index.html" class="logo"><div class="logo-icon">IH</div><span>InsightHub</span></a>
-
           <p>Smart Insights. Better Buying Decisions.</p>
-
         </div>
-
         <div class="footer-col">
-
           <h4>Explore</h4>
-
           <a href="reviews.html">Reviews</a>
-
           <a href="categories.html">Categories</a>
-
           <a href="comparison.html">Comparisons</a>
-
           <a href="trending.html">Trending</a>
-
         </div>
-
         <div class="footer-col">
-
           <h4>Company</h4>
-
           <a href="about.html">About</a>
-
           <a href="contact.html">Contact</a>
-
           <a href="privacy.html">Privacy Policy</a>
-
           <a href="disclosure.html">Affiliate Disclosure</a>
-
         </div>
-
         <div class="footer-col">
-
           <h4>Connect</h4>
-
           <a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
-
           <a href="contact.html">Newsletter</a>
-
         </div>
-
       </div>
-
       <div class="footer-bottom">
-
         <p>&copy; 2026 InsightHub. All rights reserved.</p>
-
       </div>
-
     </div>
-
   </footer>
 
-
-
   <script src="js/script.js"></script>
-
-  <script>
-
-    document.addEventListener("DOMContentLoaded", function() {
-
-      const filterBtns = document.querySelectorAll(".filter-btn");
-
-      const cards = document.querySelectorAll("#reviews-container .review-card");
-
-
-
-      filterBtns.forEach(btn => {
-
-        btn.addEventListener("click", function() {
-
-          filterBtns.forEach(b => b.classList.remove("active"));
-
-          this.classList.add("active");
-
-          const filter = this.getAttribute("data-filter");
-
-
-
-          cards.forEach(card => {
-
-            const category = card.getAttribute("data-category");
-
-            if (filter === "all" || category === filter) {
-
-              card.style.setProperty("display", "block", "important");
-
-            } else {
-
-              card.style.setProperty("display", "none", "important");
-
-            }
-
-          });
-
-        });
-
-      });
-
-    });
-
-  </script>
-
 </body>
-
 </html>
