@@ -24,11 +24,11 @@ Length is its strongest feature: If your lashes are short or you want a noticeab
     ],
     tips: "For the best results, start with clean, dry lashes and wipe any excess mascara off the wand to prevent clumping. Place the wand at the roots and gently wiggle it upward.",
     affiliateLink: "https://amzn.to/4x9gh96"
-  }, // <--- Comma added here!
+  },
   "hypnose-drama": {
     name: "Lancôme Hypnôse Drama Extreme Volumizing Mascara",
     tagline: "Instant full volume for a dramatic lash look!",
-    image: "images/hypnose-drama.jpg",
+    image: "images/Lancome.jpg",
     description: "Lancôme Hypnôse Drama Extreme Volumizing Mascara features a 24H wear formula designed for sensitive eyes, offering a clump-free, long-lasting, and intensely bold look with ultra-black pigment.",
     review: `💡 Buyer Insights:
 
