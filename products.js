@@ -11,6 +11,7 @@ Length is its strongest feature: If your lashes are short or you want a noticeab
     rating: "9.2",
     price: "$13",
     bestFor: "Budget-friendly length",
+    badge: "Best Budget",
     pros: [
       "Lengthens and thickens lashes effectively",
       "Flex tower brush reaches every lash",
@@ -23,11 +24,11 @@ Length is its strongest feature: If your lashes are short or you want a noticeab
     ],
     tips: "For the best results, start with clean, dry lashes and wipe any excess mascara off the wand to prevent clumping. Place the wand at the roots and gently wiggle it upward.",
     affiliateLink: "https://amzn.to/4x9gh96"
-  }
- "hypnose-drama": {
+  }, // <--- Comma added here!
+  "hypnose-drama": {
     name: "Lancôme Hypnôse Drama Extreme Volumizing Mascara",
     tagline: "Instant full volume for a dramatic lash look!",
-    image: "images/hypnose-drama.jpg", // Make sure to save your image here or update path
+    image: "images/hypnose-drama.jpg",
     description: "Lancôme Hypnôse Drama Extreme Volumizing Mascara features a 24H wear formula designed for sensitive eyes, offering a clump-free, long-lasting, and intensely bold look with ultra-black pigment.",
     review: `💡 Buyer Insights:
 
