@@ -81,22 +81,8 @@
         </div>
       </div>
 
-      <!-- Quick Verdict / Head-to-Head Comparison Box -->
-      <div id="quick-verdict-box" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
-        <h3 style="font-size: 1.25rem; color: #111827; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-          ⚡ The Quick Verdict: Maybelline vs. Lancôme
-        </h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; color: #4b5563; font-size: 0.95rem; line-height: 1.6;">
-          <div style="background: #f9fafb; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #2563eb;">
-            <strong style="color: #111827; display: block; margin-bottom: 0.5rem;">Choose Maybelline Sky High ($13) if:</strong>
-            You want incredible length, definition, and a budget-friendly daily driver that lifts lashes without breaking the bank.
-          </div>
-          <div style="background: #f9fafb; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #9333ea;">
-            <strong style="color: #111827; display: block; margin-bottom: 0.5rem;">Choose Lancôme Hypnôse Drama ($24) if:</strong>
-            You crave high-impact, ultra-black luxury volume, have sensitive eyes, and want 24-hour bold drama in fewer coats.
-          </div>
-        </div>
-      </div>
+      <!-- Dynamic Verdict Container -->
+      <div id="quick-verdict-box" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);"></div>
 
       <h2 class="mb-3 fade-in">Beauty & Personal Care Finds</h2>
       <div class="comparison-table-wrap fade-in mb-3">
@@ -113,7 +99,7 @@
             </tr>
           </thead>
           <tbody id="product-table-body">
-            <!-- Dynamically populated -->
+            <!-- Dynamically populated from script below -->
           </tbody>
         </table>
       </div>
@@ -161,12 +147,14 @@
       const select2 = document.getElementById("product-select-2");
       const compareBtn = document.getElementById("compare-btn");
       const tbody = document.getElementById("product-table-body");
+      const verdictBox = document.getElementById("quick-verdict-box");
 
-      if (!productsData) return;
+      if (typeof productsData === "undefined" || !productsData) return;
+
+      const productEntries = Object.entries(productsData);
 
       // Populate Dropdowns dynamically from productsData
-      const productEntries = Object.entries(productsData);
-      productEntries.forEach(([id, product], index) => {
+      productEntries.forEach(([id, product]) => {
         const option1 = document.createElement("option");
         option1.value = id;
         option1.textContent = product.name;
@@ -182,52 +170,107 @@
       if (productEntries.length >= 2) {
         select1.value = productEntries[0][0];
         select2.value = productEntries[1][0];
+      } else if (productEntries.length === 1) {
+        select1.value = productEntries[0][0];
       }
 
-      function renderTable(idsToCompare) {
-        if (!tbody) return;
-        tbody.innerHTML = "";
+      function updateComparison(id1, id2) {
+        // 1. Update Comparison Table
+        if (tbody) {
+          tbody.innerHTML = "";
+          const chosenIds = [id1, id2].filter(Boolean);
 
-        idsToCompare.forEach(id => {
-          const product = productsData[id];
-          if (!product) return;
+          chosenIds.forEach(id => {
+            const product = productsData[id];
+            if (!product) return;
 
-          const shortPros = product.pros[0] || "";
-          const shortCons = product.cons[0] || "";
+            const shortPros = (product.pros && product.pros[0]) ? product.pros[0] : "High quality performance";
+            const shortCons = (product.cons && product.cons[0]) ? product.cons[0] : "May require careful application";
 
-          const row = `
-            <tr>
-              <td class="product-name">
-                <a href="product.html?id=${id}">${product.name}</a>
-                ${product.badge ? `<span class="best-badge">${product.badge}</span>` : ''}
-              </td>
-              <td>${product.rating}</td>
-              <td>${shortPros}</td>
-              <td>${shortCons}</td>
-              <td>${product.bestFor}</td>
-              <td>${product.price}</td>
-              <td><a href="${product.affiliateLink}" class="btn btn-accent btn-sm" rel="nofollow sponsored" target="_blank">Check Price</a></td>
-            </tr>
-          `;
-          tbody.innerHTML += row;
-        });
-      }
-
-      // Initial render with default selections
-      renderTable([select1.value, select2.value].filter(Boolean));
-
-      // Handle user manual selection click
-      compareBtn.addEventListener("click", function() {
-        const val1 = select1.value;
-        const val2 = select2.value;
-        const chosenIds = [val1, val2].filter(id => id !== "");
-
-        if (chosenIds.length === 0) {
-          alert("Please select at least one product to compare.");
-          return;
+            const row = `
+              <tr>
+                <td class="product-name">
+                  <a href="product.html?id=${id}">${product.name}</a>
+                  ${product.badge ? `<span class="best-badge">${product.badge}</span>` : ''}
+                </td>
+                <td>${product.rating}</td>
+                <td>${shortPros}</td>
+                <td>${shortCons}</td>
+                <td>${product.bestFor}</td>
+                <td>${product.price}</td>
+                <td><a href="${product.affiliateLink}" class="btn btn-accent btn-sm" rel="nofollow sponsored" target="_blank">Check Price</a></td>
+              </tr>
+            `;
+            tbody.innerHTML += row;
+          });
         }
 
-        renderTable(chosenIds);
+        // 2. Update Dynamic Verdict Box
+        if (verdictBox) {
+          if (!id1 && !id2) {
+            verdictBox.style.display = "none";
+            return;
+          }
+
+          verdictBox.style.display = "block";
+          const p1 = productsData[id1];
+          const p2 = productsData[id2];
+
+          // Edge Case: User selected the same product twice
+          if (id1 && id2 && id1 === id2) {
+            verdictBox.innerHTML = `
+              <h3 style="font-size: 1.25rem; color: #111827; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                ⚡ Identical Selection: ${p1.name}
+              </h3>
+              <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                You've selected <strong>${p1.name}</strong> for both options. Select a different second product to compare features, prices, and specs side-by-side.
+              </p>
+            `;
+          } 
+          // Two distinct products selected
+          else if (p1 && p2) {
+            const name1 = p1.name.split(" ")[0];
+            const name2 = p2.name.split(" ")[0];
+            const pro1 = (p1.pros && p1.pros[0]) ? p1.pros[0] : "solid overall specs";
+            const pro2 = (p2.pros && p2.pros[0]) ? p2.pros[0] : "solid overall specs";
+
+            verdictBox.innerHTML = `
+              <h3 style="font-size: 1.25rem; color: #111827; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                ⚡ The Quick Verdict: ${name1} vs. ${name2}
+              </h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; color: #4b5563; font-size: 0.95rem; line-height: 1.6;">
+                <div style="background: #f9fafb; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #2563eb;">
+                  <strong style="color: #111827; display: block; margin-bottom: 0.5rem;">Choose ${p1.name} (${p1.price}) if:</strong>
+                  You prioritize ${p1.bestFor.toLowerCase()}. Highlights include: ${pro1.toLowerCase()}.
+                </div>
+                <div style="background: #f9fafb; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #9333ea;">
+                  <strong style="color: #111827; display: block; margin-bottom: 0.5rem;">Choose ${p2.name} (${p2.price}) if:</strong>
+                  You prioritize ${p2.bestFor.toLowerCase()}. Highlights include: ${pro2.toLowerCase()}.
+                </div>
+              </div>
+            `;
+          } 
+          // Only one product selected
+          else {
+            const activeP = p1 || p2;
+            verdictBox.innerHTML = `
+              <h3 style="font-size: 1.25rem; color: #111827; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                ⚡ Product Focus: ${activeP.name}
+              </h3>
+              <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                Rated <strong>${activeP.rating}/10</strong> at <strong>${activeP.price}</strong>. Ideal for <em>${activeP.bestFor}</em>. Select a second product above to compare.
+              </p>
+            `;
+          }
+        }
+      }
+
+      // Render default state on load
+      updateComparison(select1.value, select2.value);
+
+      // Listener for button click
+      compareBtn.addEventListener("click", function() {
+        updateComparison(select1.value, select2.value);
       });
     });
   </script>
