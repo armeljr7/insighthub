@@ -24,6 +24,30 @@ Length is its strongest feature: If your lashes are short or you want a noticeab
     tips: "For the best results, start with clean, dry lashes and wipe any excess mascara off the wand to prevent clumping. Place the wand at the roots and gently wiggle it upward.",
     affiliateLink: "https://amzn.to/4x9gh96"
   }
-  // When you add your next product later, just add it here like this:
-  // "next-product-id": { ... }
+ "hypnose-drama": {
+    name: "Lancôme Hypnôse Drama Extreme Volumizing Mascara",
+    tagline: "Instant full volume for a dramatic lash look!",
+    image: "images/hypnose-drama.jpg", // Make sure to save your image here or update path
+    description: "Lancôme Hypnôse Drama Extreme Volumizing Mascara features a 24H wear formula designed for sensitive eyes, offering a clump-free, long-lasting, and intensely bold look with ultra-black pigment.",
+    review: `💡 Buyer Insights:
+
+Known for delivering intense, buildable volume without weighing down your lashes. 
+The oversized, curved brush coats every single lash instantly for high-impact definition.`,
+    rating: "9.5",
+    price: "$24",
+    bestFor: "Extreme volume & luxury wear",
+    badge: "Best Luxury",
+    pros: [
+      "Intense volume and 24-hour wear formula",
+      "Safe for sensitive eyes and contact lens wearers",
+      "Clump-free application with rich ultra-black pigment",
+      "Curved brush lifts and coats effortlessly"
+    ],
+    cons: [
+      "Higher price point compared to drugstore alternatives",
+      "Oversized brush takes a little practice to avoid smudging"
+    ],
+    tips: "Sweep the curved side of the brush from root to tip using a zig-zag motion to maximize volume and separation.",
+    affiliateLink: "https://amzn.to/4h3kCFi"
+  }
 };
