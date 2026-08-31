@@ -54,7 +54,7 @@
   <header class="page-header">
     <div class="container">
       <h1>Product Comparisons</h1>
-      <p>Side-by-side data so you can decide with confidence. Ratings, pros, cons, price, and best-for use cases.</p>
+      <p>Side-by-side data so you can decide with confidence. Select products manually to compare features.</p>
     </div>
   </header>
 
@@ -64,8 +64,25 @@
         <strong>Affiliate Disclosure:</strong> We may earn a commission from links on this page at no extra cost to you. <a href="disclosure.html">Learn more</a>.
       </div>
 
+      <!-- Manual Product Selector Toolbar -->
+      <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;">
+        <div>
+          <h3 style="font-size: 1.1rem; color: #111827; margin-bottom: 0.25rem;">Select Products to Compare</h3>
+          <p style="font-size: 0.85rem; color: #6b7280; margin: 0;">Choose items from your catalog to build a custom side-by-side table.</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+          <select id="product-select-1" style="padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid #d1d5db; font-size: 0.9rem; background: #fff; color: #374151;">
+            <option value="">-- Choose Product 1 --</option>
+          </select>
+          <select id="product-select-2" style="padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid #d1d5db; font-size: 0.9rem; background: #fff; color: #374151;">
+            <option value="">-- Choose Product 2 --</option>
+          </select>
+          <button id="compare-btn" style="background: #2563eb; color: white; border: none; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.9rem;">Compare</button>
+        </div>
+      </div>
+
       <!-- Quick Verdict / Head-to-Head Comparison Box -->
-      <div style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+      <div id="quick-verdict-box" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
         <h3 style="font-size: 1.25rem; color: #111827; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
           ⚡ The Quick Verdict: Maybelline vs. Lancôme
         </h3>
@@ -96,7 +113,7 @@
             </tr>
           </thead>
           <tbody id="product-table-body">
-            <!-- Dynamically populated from products.js -->
+            <!-- Dynamically populated -->
           </tbody>
         </table>
       </div>
@@ -136,34 +153,82 @@
     </div>
   </footer>
 
-  <!-- Include Shared Database & Auto-Population Script -->
+  <!-- Include Shared Database & Interactive Selection Logic -->
   <script src="products.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      const select1 = document.getElementById("product-select-1");
+      const select2 = document.getElementById("product-select-2");
+      const compareBtn = document.getElementById("compare-btn");
       const tbody = document.getElementById("product-table-body");
-      if (!tbody) return;
-      tbody.innerHTML = "";
 
-      for (const [id, product] of Object.entries(productsData)) {
-        const shortPros = product.pros[0] || "";
-        const shortCons = product.cons[0] || "";
+      if (!productsData) return;
 
-        const row = `
-          <tr>
-            <td class="product-name">
-              <a href="product.html?id=${id}">${product.name}</a>
-              ${product.badge ? `<span class="best-badge">${product.badge}</span>` : ''}
-            </td>
-            <td>${product.rating}</td>
-            <td>${shortPros}</td>
-            <td>${shortCons}</td>
-            <td>${product.bestFor}</td>
-            <td>${product.price}</td>
-            <td><a href="${product.affiliateLink}" class="btn btn-accent btn-sm" rel="nofollow sponsored" target="_blank">Check Price</a></td>
-          </tr>
-        `;
-        tbody.innerHTML += row;
+      // Populate Dropdowns dynamically from productsData
+      const productEntries = Object.entries(productsData);
+      productEntries.forEach(([id, product], index) => {
+        const option1 = document.createElement("option");
+        option1.value = id;
+        option1.textContent = product.name;
+        select1.appendChild(option1);
+
+        const option2 = document.createElement("option");
+        option2.value = id;
+        option2.textContent = product.name;
+        select2.appendChild(option2);
+      });
+
+      // Set default selections if available
+      if (productEntries.length >= 2) {
+        select1.value = productEntries[0][0];
+        select2.value = productEntries[1][0];
       }
+
+      function renderTable(idsToCompare) {
+        if (!tbody) return;
+        tbody.innerHTML = "";
+
+        idsToCompare.forEach(id => {
+          const product = productsData[id];
+          if (!product) return;
+
+          const shortPros = product.pros[0] || "";
+          const shortCons = product.cons[0] || "";
+
+          const row = `
+            <tr>
+              <td class="product-name">
+                <a href="product.html?id=${id}">${product.name}</a>
+                ${product.badge ? `<span class="best-badge">${product.badge}</span>` : ''}
+              </td>
+              <td>${product.rating}</td>
+              <td>${shortPros}</td>
+              <td>${shortCons}</td>
+              <td>${product.bestFor}</td>
+              <td>${product.price}</td>
+              <td><a href="${product.affiliateLink}" class="btn btn-accent btn-sm" rel="nofollow sponsored" target="_blank">Check Price</a></td>
+            </tr>
+          `;
+          tbody.innerHTML += row;
+        });
+      }
+
+      // Initial render with default selections
+      renderTable([select1.value, select2.value].filter(Boolean));
+
+      // Handle user manual selection click
+      compareBtn.addEventListener("click", function() {
+        const val1 = select1.value;
+        const val2 = select2.value;
+        const chosenIds = [val1, val2].filter(id => id !== "");
+
+        if (chosenIds.length === 0) {
+          alert("Please select at least one product to compare.");
+          return;
+        }
+
+        renderTable(chosenIds);
+      });
     });
   </script>
   <script type="module" src="js/script.js"></script>
