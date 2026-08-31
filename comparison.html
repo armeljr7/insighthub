@@ -94,8 +94,7 @@
               <th>Pros</th>
               <th>Cons</th>
               <th>Best For</th>
-              <th>Price</th>
-              <th></th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody id="product-table-body">
@@ -197,7 +196,6 @@
                 <td>${shortPros}</td>
                 <td>${shortCons}</td>
                 <td>${product.bestFor}</td>
-                <td>${product.price}</td>
                 <td><a href="${product.affiliateLink}" class="btn btn-accent btn-sm" rel="nofollow sponsored" target="_blank">Check Price</a></td>
               </tr>
             `;
@@ -205,7 +203,7 @@
           });
         }
 
-        // 2. Update Dynamic Verdict Box
+        // 2. Update Dynamic Verdict Box (Prices removed from heading text)
         if (verdictBox) {
           if (!id1 && !id2) {
             verdictBox.style.display = "none";
@@ -223,7 +221,7 @@
                 ⚡ Identical Selection: ${p1.name}
               </h3>
               <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">
-                You've selected <strong>${p1.name}</strong> for both options. Select a different second product to compare features, prices, and specs side-by-side.
+                You've selected <strong>${p1.name}</strong> for both options. Select a different second product to compare features, specs, and highlights side-by-side.
               </p>
             `;
           } 
@@ -240,11 +238,11 @@
               </h3>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; color: #4b5563; font-size: 0.95rem; line-height: 1.6;">
                 <div style="background: #f9fafb; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #2563eb;">
-                  <strong style="color: #111827; display: block; margin-bottom: 0.5rem;">Choose ${p1.name} (${p1.price}) if:</strong>
+                  <strong style="color: #111827; display: block; margin-bottom: 0.5rem;">Choose ${p1.name}:</strong>
                   You prioritize ${p1.bestFor.toLowerCase()}. Highlights include: ${pro1.toLowerCase()}.
                 </div>
                 <div style="background: #f9fafb; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #9333ea;">
-                  <strong style="color: #111827; display: block; margin-bottom: 0.5rem;">Choose ${p2.name} (${p2.price}) if:</strong>
+                  <strong style="color: #111827; display: block; margin-bottom: 0.5rem;">Choose ${p2.name}:</strong>
                   You prioritize ${p2.bestFor.toLowerCase()}. Highlights include: ${pro2.toLowerCase()}.
                 </div>
               </div>
@@ -258,7 +256,7 @@
                 ⚡ Product Focus: ${activeP.name}
               </h3>
               <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin: 0;">
-                Rated <strong>${activeP.rating}/10</strong> at <strong>${activeP.price}</strong>. Ideal for <em>${activeP.bestFor}</em>. Select a second product above to compare.
+                Rated <strong>${activeP.rating}/10</strong>. Ideal for <em>${activeP.bestFor}</em>. Select a second product above to compare.
               </p>
             `;
           }
