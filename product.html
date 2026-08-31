@@ -110,13 +110,14 @@
     </div>
   </footer>
 
-  <!-- Include Shared Database Script -->
- <script type="module" src="js/script.js"></script>
-  <script>
+  <!-- Import productsData safely via module script -->
+  <script type="module">
+    import { productsData } from "./js/script.js";
+
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
       const productId = urlParams.get("id") || "sky-high"; 
-      const product = productsData[productId];
+      const product = productsData ? productsData[productId] : null;
 
       if (product) {
         document.getElementById("page-title").innerText = product.name + " — InsightHub";
