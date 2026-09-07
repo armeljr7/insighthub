@@ -981,3 +981,15 @@ h4 { font-size: 1.125rem; }
   .review-actions { flex-direction: column; }
   .btn { width: 100%; }
 }
+
+/* ========== Scrollable Tables and Comparison Grids ========== */
+table, .comparison-table, .table-container, .grid-comparison {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+}
+
+table th, table td {
+  white-space: nowrap;
+}
