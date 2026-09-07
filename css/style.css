@@ -993,21 +993,3 @@ table, .comparison-table, .table-container, .grid-comparison {
 table th, table td {
   white-space: nowrap;
 }
-
-/* ========== Product Selector & Form Overflow Fix ========== */
-.search-box input,
-.newsletter-form input,
-.card select,
-.card input,
-.compare-container select,
-.compare-container input {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.card, .select-products-card, .comparison-selector {
-  width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-}
