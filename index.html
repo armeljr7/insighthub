@@ -276,55 +276,6 @@
     </div>
   </footer>
 
-  <script>
-    const siteProducts = {
-      "sky-high": { name: "Maybelline Lash Sensational Sky High Washable Mascara" },
-      "lancome-hypnose": { name: "Lancôme Hypnôse Drama Extreme Volumizing Mascara" }
-    };
-
-    document.addEventListener("DOMContentLoaded", function() {
-      const searchInput = document.querySelector(".search-box input[type='search']");
-      const searchResults = document.querySelector(".search-results");
-
-      if (!searchInput) return;
-
-      searchInput.addEventListener("input", function() {
-        const query = searchInput.value.toLowerCase().trim();
-        if (!query) {
-          searchResults.innerHTML = "";
-          return;
-        }
-
-        let html = "";
-        for (const [id, data] of Object.entries(siteProducts)) {
-          if (id.toLowerCase().includes(query) || data.name.toLowerCase().includes(query)) {
-            html += `<a href="product.html?id=${id}" style="display: block; padding: 0.75rem 1rem; color: #111827; text-decoration: none; border-bottom: 1px solid #e5e7eb;">${data.name}</a>`;
-          }
-        }
-
-        if (html === "") {
-          html = `<div style="padding: 0.75rem 1rem; color: #6b7280;">No products found</div>`;
-        }
-
-        searchResults.innerHTML = html;
-      });
-
-      searchInput.addEventListener("keypress", function(e) {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          const query = searchInput.value.toLowerCase().trim();
-          for (const [id, data] of Object.entries(siteProducts)) {
-            if (id.toLowerCase().includes(query) || data.name.toLowerCase().includes(query)) {
-              window.location.href = `product.html?id=${id}`;
-              return;
-            }
-          }
-          alert("No matching product found!");
-        }
-      });
-    });
-  </script>
-
   <script type="module" src="js/script.js"></script>
 </body>
 </html>
