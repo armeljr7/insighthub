@@ -136,7 +136,7 @@ const db = getFirestore(app);
         title: 'Lancôme Hypnôse Drama Extreme Volumizing Mascara', 
         category: 'mascara', 
         page: 'product.html?id=lancome-hypnose', 
-        rating: 9.5, 
+        rating: 4.5, 
         price: '$24' 
       }
     ];
