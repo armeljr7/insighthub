@@ -125,9 +125,20 @@ const db = getFirestore(app);
     if (!searchBtn || !searchOverlay) return;
 
     const products = [
-      { title: 'Maybelline Lash Sensational Sky High Mascara', category: 'Lifestyle', page: 'product.html?id=sky-high', rating: 4.5, price: '$10.82' },
-      { title: 'Lacrom Smart Watch', category: 'Tech', page: 'product.html?id=lacrom-smartwatch', rating: 4.8, price: '$149.99' },
-      { title: 'Lacrom Pro Wireless Earbuds', category: 'Audio', page: 'product.html?id=lacrom-earbuds', rating: 4.6, price: '$89.99' }
+      { 
+        title: 'Maybelline Lash Sensational Sky High Mascara', 
+        category: 'mascara', 
+        page: 'product.html?id=sky-high', 
+        rating: 4.5, 
+        price: '$10.82' 
+      },
+      { 
+        title: 'Lancôme Hypnôse Drama Extreme Volumizing Mascara', 
+        category: 'mascara', 
+        page: 'product.html?id=lancome-hypnose', 
+        rating: 9.5, 
+        price: '$24' 
+      }
     ];
 
     function openSearch() {
