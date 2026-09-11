@@ -32,7 +32,22 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="reviews.html" class="active">Reviews</a>
-        <a href="categories.html">Categories</a>
+        <div class="dropdown">
+          <a href="categories.html" class="dropdown-toggle">Categories ▾</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-header">Women's Beauty</div>
+            <a href="reviews.html?cat=mascara">Mascara</a>
+            <a href="reviews.html?cat=lipstick">Lipstick</a>
+            <a href="reviews.html?cat=foundation">Foundation</a>
+            <a href="reviews.html?cat=skincare">Skincare</a>
+            <a href="reviews.html?cat=eyes">Eyes</a>
+            <a href="reviews.html?cat=brows">Brows</a>
+            <a href="reviews.html?cat=palettes">Palettes</a>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-header">Lifestyle</div>
+            <a href="reviews.html?cat=lifestyle">Lifestyle & Essentials</a>
+          </div>
+        </div>
         <a href="comparison.html">Compare</a>
         <a href="trending.html">Trending</a>
         <a href="about.html">About</a>
@@ -72,6 +87,7 @@
     <div class="container">
       <div class="filters">
         <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="beauty-group" data-subfilters="mascara,lipstick,foundation,skincare,eyes,brows,palettes">Women's Beauty</button>
         <button class="filter-btn" data-filter="mascara">Mascara</button>
         <button class="filter-btn" data-filter="lipstick">Lipstick</button>
         <button class="filter-btn" data-filter="foundation">Foundation</button>
@@ -88,36 +104,36 @@
 
       <div class="grid-3" id="reviews-container" data-loaded="true">
         <!-- Product 1: Maybelline Lash Sensational Sky High -->
-        <article class="review-card fade-in" data-category="mascara" style="display: block !important; visibility: visible !important; opacity: 1 !important; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onclick="window.location.href='product.html?id=sky-high';" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <div style="width: 100%; height: 220px; background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-            <img src="images/Maybelline.jpg" alt="Maybelline Lash Sensational Sky High Washable Mascara" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
+        <article class="review-card fade-in" data-category="mascara" onclick="window.location.href='product.html?id=sky-high';">
+          <div class="card-img-container">
+            <img src="images/Maybelline.jpg" alt="Maybelline Lash Sensational Sky High Washable Mascara">
           </div>
-          <div style="padding: 1.5rem;">
-            <p style="color: #ffffff; margin-bottom: 1.5rem;">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
-            <div style="background: #f9fafb; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-              <h4 style="font-size: 1rem; color: #111827; margin-bottom: 0.5rem;">Overall Review:</h4>
-              <div style="color: #4b5563; font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                <p style="margin: 0;">Customers find this mascara to be the best they've used, appreciating how it lengthens and thickens lashes while making them look fuller and longer. The product receives positive feedback for its appearance, with customers getting compliments on their eyelashes, and they consider it worth the price.</p>
+          <div class="card-body">
+            <p class="card-desc">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
+            <div class="review-box">
+              <h4>Overall Review:</h4>
+              <div class="review-text">
+                <p>Customers find this mascara to be the best they've used, appreciating how it lengthens and thickens lashes while making them look fuller and longer. The product receives positive feedback for its appearance, with customers getting compliments on their eyelashes, and they consider it worth the price.</p>
               </div>
             </div>
-            <a href="https://amzn.to/4x9gh96" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">Check Price on Amazon</a>
+            <a href="https://amzn.to/4x9gh96?tag=yourtag-20&utm_source=pinterest&utm_medium=social" target="_blank" rel="noopener" onclick="event.stopPropagation();" class="affiliate-btn">Check Price on Amazon</a>
           </div>
         </article>
 
         <!-- Product 2: Lancôme Hypnôse Drama -->
-        <article class="review-card fade-in" data-category="mascara" style="display: block !important; visibility: visible !important; opacity: 1 !important; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;" onclick="window.location.href='product.html?id=lancome-hypnose';" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 25px -5px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <div style="width: 100%; height: 220px; background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-            <img src="images/Lancome.jpg" alt="Lancôme Hypnôse Drama Extreme Volumizing Mascara" style="width: 100%; height: 100%; object-fit: contain; padding: 1rem;">
+        <article class="review-card fade-in" data-category="mascara" onclick="window.location.href='product.html?id=lancome-hypnose';">
+          <div class="card-img-container">
+            <img src="images/Lancome.jpg" alt="Lancôme Hypnôse Drama Extreme Volumizing Mascara">
           </div>
-          <div style="padding: 1.5rem;">
-            <p style="color: #ffffff; margin-bottom: 1.5rem;">Instant full volume for a dramatic lash look! Features a 24H wear formula designed for sensitive eyes, offering a clump-free finish.</p>
-            <div style="background: #f9fafb; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-              <h4 style="font-size: 1rem; color: #111827; margin-bottom: 0.5rem;">Overall Review:</h4>
-              <div style="color: #4b5563; font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                <p style="margin: 0;">Known for delivering intense, buildable volume without weighing down your lashes. The oversized, curved brush coats every single lash instantly for high-impact definition.</p>
+          <div class="card-body">
+            <p class="card-desc">Instant full volume for a dramatic lash look! Features a 24H wear formula designed for sensitive eyes, offering a clump-free finish.</p>
+            <div class="review-box">
+              <h4>Overall Review:</h4>
+              <div class="review-text">
+                <p>Known for delivering intense, buildable volume without weighing down your lashes. The oversized, curved brush coats every single lash instantly for high-impact definition.</p>
               </div>
             </div>
-            <a href="https://amzn.to/4h3kCFi" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">Check Price on Amazon</a>
+            <a href="https://amzn.to/4h3kCFi?tag=yourtag-20&utm_source=pinterest&utm_medium=social" target="_blank" rel="noopener" onclick="event.stopPropagation();" class="affiliate-btn">Check Price on Amazon</a>
           </div>
         </article>
       </div>
@@ -168,13 +184,25 @@
           filterBtns.forEach(b => b.classList.remove("active"));
           this.classList.add("active");
           const filter = this.getAttribute("data-filter");
+          const subfiltersAttr = this.getAttribute("data-subfilters");
 
           cards.forEach(card => {
             const category = card.getAttribute("data-category");
-            if (filter === "all" || category === filter) {
+            if (filter === "all") {
               card.style.setProperty("display", "block", "important");
+            } else if (subfiltersAttr) {
+              const allowedCategories = subfiltersAttr.split(",");
+              if (allowedCategories.includes(category)) {
+                card.style.setProperty("display", "block", "important");
+              } else {
+                card.style.setProperty("display", "none", "important");
+              }
             } else {
-              card.style.setProperty("display", "none", "important");
+              if (category === filter) {
+                card.style.setProperty("display", "block", "important");
+              } else {
+                card.style.setProperty("display", "none", "important");
+              }
             }
           });
         });
