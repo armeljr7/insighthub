@@ -16,6 +16,41 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Force dropdown visibility rules locally to guarantee it works */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: var(--card, #161B2E);
+      border: 1px solid var(--border, rgba(255,255,255,0.08));
+      border-radius: 10px;
+      padding: 0.5rem 0;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block !important;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: var(--text-secondary, #CBD5E1);
+      text-decoration: none;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    .dropdown-menu a:hover {
+      background: rgba(124, 58, 237, 0.15);
+      color: var(--text, #F1F5F9);
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,16 +69,16 @@
         <a href="reviews.html" class="active">Reviews</a>
         
         <!-- Women's Beauty Dropdown Parent -->
-        <div class="dropdown" style="position: relative; display: inline-block;">
+        <div class="dropdown">
           <a href="reviews.html?cat=beauty-group" class="dropdown-toggle">Women's Beauty ▾</a>
-          <div class="dropdown-menu" style="display: none; position: absolute; top: 100%; left: 0; min-width: 200px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.5rem 0; z-index: 1000;">
-            <a href="reviews.html?cat=mascara" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Mascara</a>
-            <a href="reviews.html?cat=lipstick" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Lipstick</a>
-            <a href="reviews.html?cat=foundation" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Foundation</a>
-            <a href="reviews.html?cat=skincare" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Skincare</a>
-            <a href="reviews.html?cat=eyes" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Eyes</a>
-            <a href="reviews.html?cat=brows" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Brows</a>
-            <a href="reviews.html?cat=palettes" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Palettes</a>
+          <div class="dropdown-menu">
+            <a href="reviews.html?cat=mascara">Mascara</a>
+            <a href="reviews.html?cat=lipstick">Lipstick</a>
+            <a href="reviews.html?cat=foundation">Foundation</a>
+            <a href="reviews.html?cat=skincare">Skincare</a>
+            <a href="reviews.html?cat=eyes">Eyes</a>
+            <a href="reviews.html?cat=brows">Brows</a>
+            <a href="reviews.html?cat=palettes">Palettes</a>
           </div>
         </div>
 
@@ -176,13 +211,6 @@
   <script type="module" src="js/script.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const dropdown = document.querySelector(".dropdown");
-      const dropdownMenu = document.querySelector(".dropdown-menu");
-      if (dropdown && dropdownMenu) {
-        dropdown.addEventListener("mouseenter", () => dropdownMenu.style.display = "block");
-        dropdown.addEventListener("mouseleave", () => dropdownMenu.style.display = "none");
-      }
-
       const filterBtns = document.querySelectorAll(".filter-btn");
       const cards = document.querySelectorAll("#reviews-container .review-card");
 
