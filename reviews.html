@@ -32,10 +32,11 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="reviews.html" class="active">Reviews</a>
+        
+        <!-- Women's Beauty Dropdown Parent -->
         <div class="dropdown" style="position: relative; display: inline-block;">
-          <a href="categories.html" class="dropdown-toggle">Categories ▾</a>
+          <a href="reviews.html?cat=beauty-group" class="dropdown-toggle">Women's Beauty ▾</a>
           <div class="dropdown-menu" style="display: none; position: absolute; top: 100%; left: 0; min-width: 200px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.5rem 0; z-index: 1000;">
-            <div class="dropdown-header" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); padding: 0.4rem 1rem; font-weight: 700;">Women's Beauty</div>
             <a href="reviews.html?cat=mascara" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Mascara</a>
             <a href="reviews.html?cat=lipstick" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Lipstick</a>
             <a href="reviews.html?cat=foundation" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Foundation</a>
@@ -43,11 +44,10 @@
             <a href="reviews.html?cat=eyes" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Eyes</a>
             <a href="reviews.html?cat=brows" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Brows</a>
             <a href="reviews.html?cat=palettes" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Palettes</a>
-            <div style="height: 1px; background: var(--border); margin: 0.4rem 0;"></div>
-            <div class="dropdown-header" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); padding: 0.4rem 1rem; font-weight: 700;">Lifestyle</div>
-            <a href="reviews.html?cat=lifestyle" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Lifestyle & Essentials</a>
           </div>
         </div>
+
+        <a href="reviews.html?cat=lifestyle">Lifestyle</a>
         <a href="comparison.html">Compare</a>
         <a href="trending.html">Trending</a>
         <a href="about.html">About</a>
@@ -62,11 +62,11 @@
   <div class="mobile-nav">
     <a href="index.html">Home</a>
     <a href="reviews.html">Reviews</a>
-    <a href="categories.html">Categories</a>
+    <a href="reviews.html?cat=beauty-group">Women's Beauty</a>
+    <a href="reviews.html?cat=lifestyle">Lifestyle</a>
     <a href="comparison.html">Compare</a>
     <a href="trending.html">Trending</a>
     <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
   </div>
 
   <div class="search-overlay" role="dialog" aria-label="Search">
@@ -191,6 +191,13 @@
           const category = card.getAttribute("data-category");
           if (filter === "all") {
             card.style.setProperty("display", "flex", "important");
+          } else if (filter === "beauty-group") {
+            const allowed = ["mascara", "lipstick", "foundation", "skincare", "eyes", "brows", "palettes"];
+            if (allowed.includes(category)) {
+              card.style.setProperty("display", "flex", "important");
+            } else {
+              card.style.setProperty("display", "none", "important");
+            }
           } else if (subfiltersAttr) {
             const allowedCategories = subfiltersAttr.split(",");
             if (allowedCategories.includes(category)) {
@@ -208,11 +215,15 @@
         });
       }
 
-      // Check URL parameters on load (e.g., reviews.html?cat=mascara)
+      // Check URL parameters on load (e.g., reviews.html?cat=mascara or ?cat=beauty-group)
       const urlParams = new URLSearchParams(window.location.search);
       const catParam = urlParams.get("cat");
       if (catParam) {
-        applyFilter(catParam, null);
+        if (catParam === "beauty-group") {
+          applyFilter("beauty-group", null);
+        } else {
+          applyFilter(catParam, null);
+        }
         filterBtns.forEach(btn => {
           if (btn.getAttribute("data-filter") === catParam) {
             filterBtns.forEach(b => b.classList.remove("active"));
