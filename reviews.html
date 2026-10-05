@@ -32,28 +32,30 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="reviews.html" class="active">Reviews</a>
-        <div class="dropdown">
+        <div class="dropdown" style="position: relative; display: inline-block;">
           <a href="categories.html" class="dropdown-toggle">Categories ▾</a>
-          <div class="dropdown-menu">
-            <div class="dropdown-header">Women's Beauty</div>
-            <a href="reviews.html?cat=mascara">Mascara</a>
-            <a href="reviews.html?cat=lipstick">Lipstick</a>
-            <a href="reviews.html?cat=foundation">Foundation</a>
-            <a href="reviews.html?cat=skincare">Skincare</a>
-            <a href="reviews.html?cat=eyes">Eyes</a>
-            <a href="reviews.html?cat=brows">Brows</a>
-            <a href="reviews.html?cat=palettes">Palettes</a>
-            <div class="dropdown-divider"></div>
-            <div class="dropdown-header">Lifestyle</div>
-            <a href="reviews.html?cat=lifestyle">Lifestyle & Essentials</a>
+          <div class="dropdown-menu" style="display: none; position: absolute; top: 100%; left: 0; min-width: 200px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.5rem 0; z-index: 1000;">
+            <div class="dropdown-header" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); padding: 0.4rem 1rem; font-weight: 700;">Women's Beauty</div>
+            <a href="reviews.html?cat=mascara" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Mascara</a>
+            <a href="reviews.html?cat=lipstick" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Lipstick</a>
+            <a href="reviews.html?cat=foundation" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Foundation</a>
+            <a href="reviews.html?cat=skincare" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Skincare</a>
+            <a href="reviews.html?cat=eyes" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Eyes</a>
+            <a href="reviews.html?cat=brows" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Brows</a>
+            <a href="reviews.html?cat=palettes" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Palettes</a>
+            <div style="height: 1px; background: var(--border); margin: 0.4rem 0;"></div>
+            <div class="dropdown-header" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); padding: 0.4rem 1rem; font-weight: 700;">Lifestyle</div>
+            <a href="reviews.html?cat=lifestyle" style="display: block; padding: 0.4rem 1rem; color: var(--text-secondary);">Lifestyle & Essentials</a>
           </div>
         </div>
         <a href="comparison.html">Compare</a>
         <a href="trending.html">Trending</a>
         <a href="about.html">About</a>
-        <button class="search-btn" aria-label="Open search"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
       </div>
-      <button class="menu-toggle" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button>
+      <div style="display: flex; align-items: center; gap: 0.25rem;">
+        <button class="search-btn" aria-label="Open search"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+        <button class="menu-toggle" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button>
+      </div>
     </div>
   </nav>
 
@@ -76,8 +78,8 @@
     </div>
   </div>
 
-  <header class="page-header">
-    <div class="container">
+  <header class="hero" style="padding: 4rem 0 2rem;">
+    <div class="hero-content">
       <h1>Product Reviews</h1>
       <p>In-depth analysis of the products that matter most right now.</p>
     </div>
@@ -98,44 +100,40 @@
         <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
       </div>
 
-      <div class="affiliate-disclaimer">
-        <strong>Affiliate Disclosure:</strong> InsightHub may earn a commission when you purchase through links on this page at no extra cost to you. This helps us keep our reviews independent and free. <a href="disclosure.html">Learn more</a>.
+      <div class="card" style="padding: 1rem 1.25rem; margin-bottom: 2.5rem; background: rgba(124, 58, 237, 0.08); border-color: rgba(124, 58, 237, 0.25);">
+        <p style="font-size: 0.875rem; color: var(--text-secondary);"><strong>Affiliate Disclosure:</strong> InsightHub may earn a commission when you purchase through links on this page at no extra cost to you. This helps us keep our reviews independent and free. <a href="disclosure.html">Learn more</a>.</p>
       </div>
 
-      <div class="grid-3" id="reviews-container" data-loaded="true">
-        <!-- Product 1: Maybelline Lash Sensational Sky High -->
-        <article class="review-card fade-in" data-category="mascara" onclick="window.location.href='product.html?id=sky-high';">
-          <div class="card-img-container">
-            <img src="images/Maybelline.jpg" alt="Maybelline Lash Sensational Sky High Washable Mascara">
+      <div class="grid-3" id="reviews-container">
+        <!-- Product 1 -->
+        <article class="review-card" data-category="mascara" onclick="window.location.href='product.html?id=sky-high';">
+          <div class="review-img-wrap" style="background: #1a1f35; padding: 1.5rem; display: flex; align-items: center; justify-content: center;">
+            <img src="images/Maybelline.jpg" alt="Maybelline Lash Sensational Sky High Washable Mascara" style="max-height: 200px; width: auto; object-fit: contain;">
+            <span class="review-badge">Mascara & Beauty</span>
           </div>
-          <div class="card-body">
-            <span class="card-badge">Mascara & Beauty</span>
-            <p class="card-desc">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
-            <div class="review-box">
-              <h4>Overall Review:</h4>
-              <div class="review-text">
-                <p>Customers find this mascara to be the best they've used, appreciating how it lengthens and thickens lashes while making them look fuller and longer...</p>
-              </div>
+          <div class="review-body">
+            <p class="review-excerpt">Full volume meets limitless length! Features an exclusive flex tower brush that bends to volumize and extend every single lash from root to tip.</p>
+            <div style="background: white; color: #1e293b; padding: 1rem; border-radius: 10px; margin-bottom: 1.25rem;">
+              <h4 style="font-size: 0.875rem; color: #0f172a; margin-bottom: 0.25rem;">Overall Review:</h4>
+              <p style="font-size: 0.815rem; color: #475569; line-height: 1.4;">Customers find this mascara to be the best they've used, appreciating how it lengthens and thickens lashes while making them look fuller and longer...</p>
             </div>
-            <a href="https://amzn.to/4x9gh96?tag=yourtag-20&utm_source=pinterest&utm_medium=social" target="_blank" rel="noopener" onclick="event.stopPropagation();" class="affiliate-btn">Check Price on Amazon</a>
+            <a href="https://amzn.to/4x9gh96?tag=yourtag-20&utm_source=pinterest&utm_medium=social" target="_blank" rel="noopener" onclick="event.stopPropagation();" class="btn btn-primary" style="width: 100%; text-align: center;">Check Price on Amazon</a>
           </div>
         </article>
 
-        <!-- Product 2: Lancôme Hypnôse Drama -->
-        <article class="review-card fade-in" data-category="mascara" onclick="window.location.href='product.html?id=lancome-hypnose';">
-          <div class="card-img-container">
-            <img src="images/Lancome.jpg" alt="Lancôme Hypnôse Drama Extreme Volumizing Mascara">
+        <!-- Product 2 -->
+        <article class="review-card" data-category="mascara" onclick="window.location.href='product.html?id=lancome-hypnose';">
+          <div class="review-img-wrap" style="background: #1a1f35; padding: 1.5rem; display: flex; align-items: center; justify-content: center;">
+            <img src="images/Lancome.jpg" alt="Lancôme Hypnôse Drama Extreme Volumizing Mascara" style="max-height: 200px; width: auto; object-fit: contain;">
+            <span class="review-badge">Luxury Beauty</span>
           </div>
-          <div class="card-body">
-            <span class="card-badge">Luxury Beauty</span>
-            <p class="card-desc">Instant buildable volume for an intense look. Features a unique curved brush that coats every lash evenly for dramatic, clump-free wear.</p>
-            <div class="review-box">
-              <h4>Overall Review:</h4>
-              <div class="review-text">
-                <p>Users praise its luxurious feel, intense volume, and long-lasting 24-hour formula that doesn't flake or smudge throughout the day...</p>
-              </div>
+          <div class="review-body">
+            <p class="review-excerpt">Instant buildable volume for an intense look. Features a unique curved brush that coats every lash evenly for dramatic, clump-free wear.</p>
+            <div style="background: white; color: #1e293b; padding: 1rem; border-radius: 10px; margin-bottom: 1.25rem;">
+              <h4 style="font-size: 0.875rem; color: #0f172a; margin-bottom: 0.25rem;">Overall Review:</h4>
+              <p style="font-size: 0.815rem; color: #475569; line-height: 1.4;">Users praise its luxurious feel, intense volume, and long-lasting 24-hour formula that doesn't flake or smudge throughout the day...</p>
             </div>
-            <a href="https://amzn.to/4h3kCFi?tag=yourtag-20&utm_source=pinterest&utm_medium=social" target="_blank" rel="noopener" onclick="event.stopPropagation();" class="affiliate-btn">Check Price on Amazon</a>
+            <a href="https://amzn.to/4h3kCFi?tag=yourtag-20&utm_source=pinterest&utm_medium=social" target="_blank" rel="noopener" onclick="event.stopPropagation();" class="btn btn-primary" style="width: 100%; text-align: center;">Check Price on Amazon</a>
           </div>
         </article>
       </div>
@@ -178,6 +176,15 @@
   <script type="module" src="js/script.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      // Dropdown hover control for desktop
+      const dropdown = document.querySelector(".dropdown");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+      if (dropdown && dropdownMenu) {
+        dropdown.addEventListener("mouseenter", () => dropdownMenu.style.display = "block");
+        dropdown.addEventListener("mouseleave", () => dropdownMenu.style.display = "none");
+      }
+
+      // Filter functionality
       const filterBtns = document.querySelectorAll(".filter-btn");
       const cards = document.querySelectorAll("#reviews-container .review-card");
 
@@ -191,17 +198,17 @@
           cards.forEach(card => {
             const category = card.getAttribute("data-category");
             if (filter === "all") {
-              card.style.setProperty("display", "block", "important");
+              card.style.setProperty("display", "flex", "important");
             } else if (subfiltersAttr) {
               const allowedCategories = subfiltersAttr.split(",");
               if (allowedCategories.includes(category)) {
-                card.style.setProperty("display", "block", "important");
+                card.style.setProperty("display", "flex", "important");
               } else {
                 card.style.setProperty("display", "none", "important");
               }
             } else {
               if (category === filter) {
-                card.style.setProperty("display", "block", "important");
+                card.style.setProperty("display", "flex", "important");
               } else {
                 card.style.setProperty("display", "none", "important");
               }
