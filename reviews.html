@@ -176,7 +176,6 @@
   <script type="module" src="js/script.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Dropdown hover control for desktop
       const dropdown = document.querySelector(".dropdown");
       const dropdownMenu = document.querySelector(".dropdown-menu");
       if (dropdown && dropdownMenu) {
@@ -184,36 +183,52 @@
         dropdown.addEventListener("mouseleave", () => dropdownMenu.style.display = "none");
       }
 
-      // Filter functionality
       const filterBtns = document.querySelectorAll(".filter-btn");
       const cards = document.querySelectorAll("#reviews-container .review-card");
 
+      function applyFilter(filter, subfiltersAttr) {
+        cards.forEach(card => {
+          const category = card.getAttribute("data-category");
+          if (filter === "all") {
+            card.style.setProperty("display", "flex", "important");
+          } else if (subfiltersAttr) {
+            const allowedCategories = subfiltersAttr.split(",");
+            if (allowedCategories.includes(category)) {
+              card.style.setProperty("display", "flex", "important");
+            } else {
+              card.style.setProperty("display", "none", "important");
+            }
+          } else {
+            if (category === filter) {
+              card.style.setProperty("display", "flex", "important");
+            } else {
+              card.style.setProperty("display", "none", "important");
+            }
+          }
+        });
+      }
+
+      // Check URL parameters on load (e.g., reviews.html?cat=mascara)
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get("cat");
+      if (catParam) {
+        applyFilter(catParam, null);
+        filterBtns.forEach(btn => {
+          if (btn.getAttribute("data-filter") === catParam) {
+            filterBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+          }
+        });
+      }
+
+      // Button click filtering
       filterBtns.forEach(btn => {
         btn.addEventListener("click", function() {
           filterBtns.forEach(b => b.classList.remove("active"));
           this.classList.add("active");
           const filter = this.getAttribute("data-filter");
           const subfiltersAttr = this.getAttribute("data-subfilters");
-
-          cards.forEach(card => {
-            const category = card.getAttribute("data-category");
-            if (filter === "all") {
-              card.style.setProperty("display", "flex", "important");
-            } else if (subfiltersAttr) {
-              const allowedCategories = subfiltersAttr.split(",");
-              if (allowedCategories.includes(category)) {
-                card.style.setProperty("display", "flex", "important");
-              } else {
-                card.style.setProperty("display", "none", "important");
-              }
-            } else {
-              if (category === filter) {
-                card.style.setProperty("display", "flex", "important");
-              } else {
-                card.style.setProperty("display", "none", "important");
-              }
-            }
-          });
+          applyFilter(filter, subfiltersAttr);
         });
       });
     });
